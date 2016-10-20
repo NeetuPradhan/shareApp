@@ -7,7 +7,7 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-lg-6">
-            <form role="form" id="frm" method="post" action="<?=base_url().'admin/settings/change_password'?>">
+            <form role="form" id="frm" method="post" action="<?=base_url().'backend/settings/change_password'?>">
               <div class="form-group">
                 <label>Current Password</label>
                 <input name="cPassword" type='password' class="form-control" placeholder="Enter Current Password">

@@ -61,6 +61,14 @@ class Helper_model extends CI_Model {
             return false;
         }
     }
+
+    public function count_admin_new_messages(){
+        $options = array('del_flag' => '0',
+                            'read_flag' => '0');
+        $this->db->where($options);
+        return ($this->db->count_all_results('tbl_user_messages'));
+    }
+
 }
 
 ?>

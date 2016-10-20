@@ -1,0 +1,27 @@
+.my-info {
+	color: #777;
+}
+.my-text {
+	padding-top: 15px !important; 
+}
+.my-button-lg {
+	padding-top: 10px !important; 
+}
+.my-button-sm {
+	padding-top: 13px !important; 
+}
+.mid-valign {
+	vertical-align: middle !important;
+}
+
+.panel-button {
+	margin-bottom: 5px;
+}
+
+.sidebar-menu, .main-sidebar .user-panel, .sidebar-menu > li.header {
+    white-space: normal !important;
+}
+
+.email-view {
+	min-height: 40px !important;
+}

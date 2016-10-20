@@ -87,3 +87,20 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
 define('ADMIN_PATH', 'backend');
+
+//logo image
+define('LOGO_W', 172); //width
+define('LOGO_H', 58); //height
+
+//userimage
+define('USER_W', 640); // width
+define('USER_H', 480); // height
+
+// banner image
+define('BANNER_W', 160); // width
+define('BANNER_H', 60); // height
+
+// image directory
+define('UPLOAD_DIR','uploads/');
+define('BANNER_DIR',UPLOAD_DIR.'admin/banner/');
+define('TEMP_DIR',UPLOAD_DIR.'admin/temp/');

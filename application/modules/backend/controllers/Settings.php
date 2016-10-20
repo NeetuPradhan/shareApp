@@ -5,11 +5,11 @@ class Settings extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('admin/settings_model');
+        $this->load->model('backend/settings_model');
         $this->load->library('form_validation');
         $this->load->helper('file');
         if(!$this->helper_model->validate_admin_session()){
-          redirect(base_url() . 'admin');
+          redirect(base_url() . 'backend');
         }
     }
 
@@ -46,10 +46,10 @@ class Settings extends CI_Controller {
 
             
             $data['info'] = $this->settings_model->get_site_settings();
-            $data['main'] = 'admin/site_settings';
+            $data['main'] = 'backend/site_settings';
             $data['title'] = 'Site Settings';
 
-            $this->load->view('admin/admin', $data);
+            $this->load->view('backend/admin', $data);
         } else {
             if (isset($_POST['post_logo'])) {
                 $logo = $_POST['post_logo'];
@@ -105,9 +105,9 @@ class Settings extends CI_Controller {
         $this->form_validation->set_rules('confirmPassword', 'Confirm Password', 'required|xss_clean|matches[password]');
 
         if ($this->form_validation->run() == FALSE) {
-            $data['main'] = 'admin/change_password';
+            $data['main'] = 'backend/change_password';
             $data['title'] = 'Change Password';
-            $this->load->view('admin/admin', $data);
+            $this->load->view('backend/admin', $data);
         } else {
             $password = $this->helper_model->encrypt_me($this->input->post('password'));
             if($this->settings_model->update_password($password)) {
@@ -141,9 +141,9 @@ class Settings extends CI_Controller {
 
          if ($this->form_validation->run() == FALSE) {
             $data['info'] = $this->settings_model->get_email_template($template_code);
-            $data['main'] = 'admin/email_templates';
+            $data['main'] = 'backend/email_templates';
             $data['title'] = 'Email Templates';
-            $this->load->view('admin/admin', $data);
+            $this->load->view('backend/admin', $data);
         } else {
             if($this->settings_model->update_email_template()) {
                 $this->session->set_userdata( 'flash_msg_type', "success" );
@@ -175,15 +175,11 @@ class Settings extends CI_Controller {
          if($this->form_validation->run() == FALSE) {
             $data['info'] = $this->settings_model->get_cms($title);
             $data['select_info'] = $this->settings_model->get_cms();
-            $data['main'] = 'admin/cms';
+            $data['main'] = 'backend/cms';
             $data['title'] = 'Content Management';
             if(!(validation_errors())) {
-                $this->load->view('admin/admin', $data);
+                $this->load->view('backend/admin', $data);
             } else {
-                /*$data['main'] = $this->input->post('cms_page');
-                $this->load->view('admin/admin', $data);*/
-                //redirect(ADMIN_PATH . '/settings/cms/' . $this->input->post('cms_page'));
-                //$this->cms($this->input->post('cms_page'));
                 redirect(ADMIN_PATH . '/settings/cms/' . $this->input->post('cms_page'), 'refresh');
                 
             }
@@ -216,10 +212,10 @@ class Settings extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $data['info'] = $this->settings_model->get_contact_info();
-            $data['main'] = 'admin/contact_details';
+            $data['main'] = 'backend/contact_details';
 
             $data['title'] = 'Contact Details';
-            $this->load->view('admin/admin', $data);
+            $this->load->view('backend/admin', $data);
         } else {
             if($this->settings_model->update_contact()) {
                 $this->session->set_userdata( 'flash_msg_type', "success" );
@@ -268,10 +264,10 @@ class Settings extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $data['info'] = $this->settings_model->get_email_settings();
-            $data['main'] = 'admin/email_settings';
+            $data['main'] = 'backend/email_settings';
 
             $data['title'] = 'Email Settings';
-            $this->load->view('admin/admin', $data);
+            $this->load->view('backend/admin', $data);
         } else {
             if($this->settings_model->update_email_settings()) {
                 $this->session->set_userdata( 'flash_msg_type', "success" );

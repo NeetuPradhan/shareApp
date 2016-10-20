@@ -115,7 +115,6 @@ class Admin extends CI_Controller {
 			if(send_email($mail_settings, $data)) {
 				echo "<p>Please check your email inbox. <br> A message has been sent with Password Reset link.</p>";
 				exit;
-				//echo $this->email->print_debugger();
 			} else {
 				echo "<p>Password reset request can't be completed at the moment. Please"
 					.  "<a href='" . base_url() . "login/admin_forgot_pass'> try again</a>"
