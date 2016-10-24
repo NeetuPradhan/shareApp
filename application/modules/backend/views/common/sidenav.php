@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </li>
 
         <li>
-                <a href="<?=base_url().'backend/message';?>">
+                <a href="<?=base_url().'backend/messages';?>">
                     <i class="fa fa-envelope fa-fw"></i>
                     <span>Message</span> <?php 
                                               $new_msg = $this->helper_model->count_admin_new_messages();

@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-<link href="<?=base_url();?>assets/backend/css/style.css" rel="stylesheet">
-
 <!-- Default box -->
 <div class="box box-primary">
     <div class="box-header with-border">
@@ -39,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="butpro butstyle">
                     <div class="sub"><h2>Messages</h2></div>
-                    <div class="stat"><a href="<?=base_url().'backend/message';?>"><img src="<?=base_url()?>images/email_settings2.png"></a> </div>
+                    <div class="stat"><a href="<?=base_url().'backend/messages';?>"><img src="<?=base_url()?>images/email_settings2.png"></a> </div>
                 </div>
 
                 <div class="butpro butstyle">
