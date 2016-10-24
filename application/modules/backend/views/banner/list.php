@@ -59,8 +59,6 @@
     </div>
 </div>
 
-<script src="<?=base_url();?>assets/admin/js/admin.js"></script>
-
 <!-- DataTables -->
 <script src="<?=base_url().'assets/admin/template/'?>plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?=base_url().'assets/admin/template/'?>plugins/datatables/dataTables.bootstrap.min.js"></script>

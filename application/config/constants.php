@@ -101,6 +101,7 @@ define('BANNER_W', 160); // width
 define('BANNER_H', 60); // height
 
 // image directory
-define('UPLOAD_DIR','uploads/');
-define('BANNER_DIR',UPLOAD_DIR.'admin/banner/');
-define('TEMP_DIR',UPLOAD_DIR.'admin/temp/');
+define('UPLOAD_DIR','uploads/admin/');
+define('BANNER_DIR',UPLOAD_DIR.'banner/');
+define('TEMP_DIR',UPLOAD_DIR.'temp/');
+define('LOGO_DIR',UPLOAD_DIR.'logo/');

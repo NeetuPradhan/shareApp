@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Logo -->
     <a href="<?=base_url()?>" target="_blank" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><img height="50" width="50" title="Click to open the site home page in a new tab." src="<?=base_url().'uploads/admin/images/logo/'?><?=$this->config->item('fav_icon');?>" alt="<?=$this->config->item('site_name')." - logo"?>"></span>
+      <span class="logo-mini"><img height="50" width="50" title="Click to open the site home page in a new tab." src="<?=base_url().LOGO_DIR.$this->config->item('logo')?>" alt="<?=$this->config->item('site_name')." - logo"?>"></span>
       <!-- logo for regular state and mobile devices -->
       <span title="Click to open the site home page in a new tab." class="logo-lg"><?=$this->config->item('site_name')?></span>
     </a>
@@ -128,13 +128,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?=base_url().'uploads/admin/images/logo/' . $this->config->item('fav_icon')?>" class="user-image" alt="<?=$this->config->item('site_name')?> - logo">
+              <img src="<?=base_url().LOGO_DIR.$this->config->item('logo')?>" class="user-image" alt="<?=$this->config->item('site_name')?> - logo">
               <span class="hidden-xs"><?=$this->config->item('site_name')?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?=base_url().'uploads/admin/images/logo/' . $this->config->item('fav_icon')?>" class="img-circle" alt="<?=$this->config->item('site_name')?> - logo">
+                <img src="<?=base_url().LOGO_DIR.$this->config->item('logo')?>" class="img-circle" alt="<?=$this->config->item('site_name')?> - logo">
 
                 <p>
                   <?=$this->config->item('site_name')?> - Admin
