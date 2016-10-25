@@ -17,12 +17,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="butpro butstyle">
                     <div class="sub"><h2>Email Setting</h2></div>
-                    <div class="stat"><a href="<?=base_url().'backend/settings/email_settings';?>"><img src="<?=base_url()?>images/email_settings2.png"></a> </div>
+                    <div class="stat"><a href="<?=base_url().'backend/settings/email_settings';?>"><img src="<?=base_url()?>images/email_settings.png"></a> </div>
                 </div>
 
                 <div class="butpro butstyle">
+                        <div class="sub"><h2>Mail Templates</h2></div>
+                        <div class="stat"><a href="<?=base_url().'backend/settings/email_templates';?>"><img src="<?=base_url()?>images/email_settings2.png" /></a> </div>
+                    </div>
+
+                <div class="butpro butstyle">
                     <div class="sub"><h2>Contact Info</h2></div>
-                    <div class="stat"><a href="<?=base_url().'backend/contact';?>"><img src="<?=base_url()?>images/search_index.png"></a> </div>
+                    <div class="stat"><a href="<?=base_url().'backend/settings/contact_details';?>"><img src="<?=base_url()?>images/search_index.png"></a> </div>
                 </div>
 
                 <div class="butpro butstyle">
@@ -37,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="butpro butstyle">
                     <div class="sub"><h2>Messages</h2></div>
-                    <div class="stat"><a href="<?=base_url().'backend/messages';?>"><img src="<?=base_url()?>images/email_settings2.png"></a> </div>
+                    <div class="stat"><a href="<?=base_url().'backend/messages';?>"><img src="<?=base_url()?>images/message.png"></a> </div>
                 </div>
 
                 <div class="butpro butstyle">

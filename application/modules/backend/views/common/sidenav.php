@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?=ADMIN_PATH?>">
+          <a href="<?php echo base_url().'backend';?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>

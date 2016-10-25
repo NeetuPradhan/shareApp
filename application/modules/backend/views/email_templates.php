@@ -38,6 +38,7 @@
               <div class="form-group">
                 <label>Email Body</label>
                 <?php
+                $value='';
                   if(isset($info['content'])) {
                     $value = stripslashes($info['content']);
                   } else if($this->input->post('content')) {
