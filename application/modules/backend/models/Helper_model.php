@@ -69,6 +69,16 @@ class Helper_model extends CI_Model {
         return ($this->db->count_all_results('tbl_user_messages'));
     }
 
+    public function get_messages($limit=''){
+        $this->db->where('del_flag', 0);
+        $this->db->order_by('id', 'ASC');
+        $this->db->limit($limit);
+
+        $query = $this->db->get('tbl_user_messages');
+        return $query->result_array();
+
+    }
+
 }
 
 ?>

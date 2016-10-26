@@ -39,47 +39,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?php 
                         $new_msg = $this->helper_model->count_admin_new_messages();
                         if($new_msg>0):
-                    ?>
+                    ?> 
                     <small class="label pull-right bg-green"><?=$new_msg?> new</small>
                     <?php 
                         endif;
                     ?>
                 </a>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-pencil"></i> <span>Place</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu" style="display: none;">
-                    <li>
-                        <a href="<?=base_url().'backend/place';?>">
-                            <i class="fa fa-table fa-fw"></i><span> View Places</span>
-                        </a>
-                    <li>
-                        <a href="<?=base_url().'backend/place/add';?>"><i class="fa fa-plus"></i><span> Add New Place</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-pencil"></i> <span>Activity</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu" style="display: none;">
-                    <li>
-                        <a href="<?=base_url().'backend/activity';?>">
-                            <i class="fa fa-table fa-fw"></i><span> View Activities</span>
-                        </a>
-                    <li>
-                        <a href="<?=base_url().'backend/activity/add';?>"><i class="fa fa-plus"></i><span> Add New Activity</span></a>
-                    </li>
-                </ul>
-            </li>
             <li>
-                <i class="fa fa-map-marker" aria-hidden="true"></i> <span>Contact</span>
                 <a href="<?=base_url().'backend/settings/contact_details';?>">
-                    <i class="fa fa-table fa-fw"></i><span>Contact</span>
+                    <i class="fa fa-map-marker"></i> <span>Contact</span>
                 </a>
             </li>
             <li class="treeview">
@@ -95,11 +64,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </li>
                     <li>
                         <a href="<?=base_url().'backend/cms/add';?>"><i class="fa fa-plus"></i><span> Add New Page</span></a>
-                    </li>
-                    <li>
-                        <a href="<?=base_url().'backend/about';?>">
-                            <i class="fa fa-edit fa-fw"></i><span> Edit About Page</span>
-                        </a>
                     </li>
                 </ul>
             </li>

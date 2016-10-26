@@ -54,20 +54,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 <?php
-                                  //$messages = $this->helper_model->get_messages(10);
-                                  // foreach ($messages as $message) {
+                                    $messages = $this->helper_model->get_messages(10);
+                                    foreach ($messages as $message) {
                                 ?>
                                 <li><!-- start message -->
-                                    <a title="<?//=$message['message']?>" href="<?//=ADMIN_PATH.'message/details/'.$message['id']?>">
+                                    <a title="<?=$message['message']?>" href="<?= base_url().'backend/messages/details/'.$message['id']?>">
                                         <h4 class="mini-menu">
-                                            <?//=$message['name']?>
-                                            <small><i class="fa fa-clock-o"></i> <?php //echo calculate_age_with_unit($message['received_date_time'])?></small>
+                                            <?=$message['name']?>
+                                            <small><i class="fa fa-clock-o"></i> <?php echo calculate_age_with_unit($message['received_date_time'])?></small>
                                         </h4>
-                                        <p class="mini-menu"><?//=$message['message']?></p>
+                                        <p class="mini-menu"><?=$message['message']?></p>
                                     </a>
                                 </li>
                                 <?php 
-                                   // }
+                                    }
                                 ?>
                             </ul>
                         </li>
