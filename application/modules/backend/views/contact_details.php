@@ -41,7 +41,6 @@
                             <div class="form-group">
                                 <label>Office Hours(Weekdays)</label>
                                     <?php 
-                                    // prePrint($info['weekday_start_time']);
                                       if(form_error('weekday_start_time') || form_error('weekday_end_time') || form_error('weekend_start_time') || form_error('weekend_end_time')) {
                                         echo "<p style='color:red'>Please Enter Office Hours Correctly</p>";
                                       }

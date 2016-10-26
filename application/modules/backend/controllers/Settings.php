@@ -159,46 +159,6 @@ class Settings extends CI_Controller {
 
     }
 
-
-    public function cms($title='about_us') {
-        $this->form_validation->set_rules('head_text', 'Heading', 'required|xss_clean');
-        $this->form_validation->set_rules('page_title', 'Page Title', 'required|xss_clean');
-        $this->form_validation->set_rules('content', 'Content', 'required|xss_clean');
-        $this->form_validation->set_rules('meta_keywords', 'Meta Keywords', 'required|xss_clean');
-        $this->form_validation->set_rules('status', 'Status', 'required|xss_clean');        
-        $this->form_validation->set_rules('meta_description', 'Meta Description', 'required|xss_clean');
-
-        editor();
-
-        $page_title=$this->input->post('page_title');
-
-         if($this->form_validation->run() == FALSE) {
-            $data['info'] = $this->settings_model->get_cms($title);
-            $data['select_info'] = $this->settings_model->get_cms();
-            $data['main'] = 'backend/cms';
-            $data['title'] = 'Content Management';
-            if(!(validation_errors())) {
-                $this->load->view('backend/admin', $data);
-            } else {
-                redirect(ADMIN_PATH . '/settings/cms/' . $this->input->post('cms_page'), 'refresh');
-                
-            }
-        } else {
-            if($this->settings_model->update_cms($this->input->post('cms_page'))) {
-                $this->session->set_userdata( 'flash_msg_type', "success" );
-                $this->session->set_flashdata('flash_msg', $this->input->post('page_title').' Page Updated Successfully');
-                redirect(ADMIN_PATH . '/settings/cms/' . $this->input->post('cms_page'), 'refresh');
-            } else {
-                $this->session->set_userdata( 'flash_msg_type', "danger" );
-                $this->session->set_flashdata('flash_msg', 'Sorry, Unable to Update the Page Currently.');
-                redirect(ADMIN_PATH . '/settings/cms/' . $this->input->post('cms_page'), 'refresh');
-            }
-
-        }
-
-    }
-
-
     public function contact_details(){
         $this->form_validation->set_rules('phone', 'Phone', 'required|xss_clean');
         $this->form_validation->set_rules('email', 'Email', 'valid_email|required|xss_clean');
