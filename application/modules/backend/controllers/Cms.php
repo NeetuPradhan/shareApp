@@ -26,6 +26,7 @@ class Cms extends CI_Controller {
         $data['cms'] = $this->cms_model->cms_list($config['per_page'], $offset);
         $data['links'] = $this->pagination->create_links();
         $data['title'] = 'Content Page';
+        $data['subtitle'] = 'Manage your content pages here';
 
         $this->load->view('backend/admin', $data);
     }
@@ -43,6 +44,7 @@ class Cms extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['main'] = 'backend/cms/add';
             $data['title'] = 'Add New Content Page';
+            $data['subtitle'] = 'Add your content pages here';
             $this->load->view('backend/admin', $data);
         } else {
             $this->cms_model->add_cms();
@@ -65,6 +67,7 @@ class Cms extends CI_Controller {
             $data['info'] = $this->cms_model->get_cms($cms_id);
             $data['main'] = 'backend/cms/edit';
             $data['title'] = 'Edit CMS';
+            $data['subtitle'] = 'Update your content pages here';
             $this->load->view('backend/admin', $data);
         } else {
             $this->cms_model->update_cms($cms_id);

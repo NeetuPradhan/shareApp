@@ -19,6 +19,8 @@ class Admin extends CI_Controller {
 			$this->load->view('backend/login');
 		} else {
 			$data['main'] = 'backend/dashboard';
+			$data['title'] = 'Dashboard';
+			$data['subtitle'] = 'Welcome to ShareApp Download';
 			$this->load->view('backend/admin', $data);
 		}
 	}

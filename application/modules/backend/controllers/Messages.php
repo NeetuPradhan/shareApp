@@ -22,6 +22,7 @@ class Messages extends CI_Controller {
 	public function get_messages(){
 		$data['messages'] = $this->messages_model->get_messages();
         $data['title'] = 'User Messages';
+        $data['subtitle'] = 'View your message here';
         $data['main'] = 'backend/user_messages/list';
         $this->load->view('backend/admin', $data);
 	}
@@ -45,6 +46,8 @@ class Messages extends CI_Controller {
 		$this->messages_model->update_read_status($id);
 		$data['message'] = $this->messages_model->get_message_details($id);
         $data['main'] = 'backend/user_messages/details';
+        $data['title'] = 'Message'.' - '.$data['message']['subject'];
+        $data['subtitle'] = 'Your message details';
         $this->load->view('backend/admin', $data);
 	}
 

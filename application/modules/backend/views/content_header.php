@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <section class="content-header">
       <h1>
-        <?//=$title?>
-        <small><?//=$subtitle?></small>
+        <?=$title?>
+        <small><?=$subtitle?></small>
       </h1>
       <ol class="breadcrumb">Admin
         <?php 

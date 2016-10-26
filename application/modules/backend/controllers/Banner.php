@@ -27,6 +27,7 @@ class Banner extends CI_Controller {
         $data['banner'] = $this->banner_model->banner_list($config['per_page'], $offset);
         $data['links'] = $this->pagination->create_links();
         $data['title'] = 'Banner';
+        $data['subtitle'] = 'Manage your banner images here.';
 
         $this->load->view('backend/admin', $data);
     }
@@ -44,6 +45,7 @@ class Banner extends CI_Controller {
             }
             $data['main'] = 'backend/banner/add';
             $data['title'] = 'Add Banners';
+            $data['subtitle'] = 'Add new banner here';
             $this->load->view('backend/admin', $data);
         } else {
             if(!isset($_POST['post_image'])){
@@ -70,6 +72,7 @@ class Banner extends CI_Controller {
             $data['info'] = $this->banner_model->get_banner($banner_id);
             $data['main'] = 'backend/banner/edit';
             $data['title'] = 'Edit Banners';
+            $data['subtitle'] = 'Update banner here';
             $this->load->view('backend/admin', $data);
         } else {
             if (isset($_POST['post_image'])) {

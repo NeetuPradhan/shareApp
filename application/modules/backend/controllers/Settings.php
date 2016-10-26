@@ -48,6 +48,7 @@ class Settings extends CI_Controller {
             $data['info'] = $this->settings_model->get_site_settings();
             $data['main'] = 'backend/site_settings';
             $data['title'] = 'Site Settings';
+            $data['subtitle'] = 'Change the major settings for you website here.';
 
             $this->load->view('backend/admin', $data);
         } else {
@@ -107,6 +108,7 @@ class Settings extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['main'] = 'backend/change_password';
             $data['title'] = 'Change Password';
+            $data['subtitle'] = 'Change your Admin password here';
             $this->load->view('backend/admin', $data);
         } else {
             $password = $this->helper_model->encrypt_me($this->input->post('password'));
@@ -143,6 +145,7 @@ class Settings extends CI_Controller {
             $data['info'] = $this->settings_model->get_email_template($template_code);
             $data['main'] = 'backend/email_templates';
             $data['title'] = 'Email Templates';
+            $data['subtitle'] = 'Manage your email template here.';
             $this->load->view('backend/admin', $data);
         } else {
             if($this->settings_model->update_email_template()) {
@@ -174,6 +177,7 @@ class Settings extends CI_Controller {
             $data['info'] = $this->settings_model->get_contact_info();
             $data['main'] = 'backend/contact_details';
             $data['title'] = 'Contact Info';
+            $data['subtitle'] = 'Manage your contact addresses here.';
             $this->load->view('backend/admin', $data);
         } else {
             if($this->settings_model->update_contact()) {
@@ -226,6 +230,7 @@ class Settings extends CI_Controller {
             $data['main'] = 'backend/email_settings';
 
             $data['title'] = 'Email Settings';
+            $data['subtitle'] = 'Update your domain email settings here';
             $this->load->view('backend/admin', $data);
         } else {
             if($this->settings_model->update_email_settings()) {

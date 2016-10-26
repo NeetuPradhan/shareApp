@@ -2,7 +2,7 @@
     <div class="col-lg-8">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <?='Message Details'?>
+                <?=$title;?>
             </div>
             <div class="panel-body">
                 <div class="row">

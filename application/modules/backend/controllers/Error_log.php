@@ -13,6 +13,7 @@ class Error_log extends CI_Controller {
 
    	function index () {
    		$data['title'] = 'Error Log';
+      $data['subtitle'] = 'View your recent error log here.';
    		$data['main'] = 'backend/log';
    		$this->load->view('backend/admin', $data);
    	}
