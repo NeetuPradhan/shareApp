@@ -42,6 +42,20 @@ class Messages extends CI_Controller {
 	}
 
 
+    public function delete($id) {
+        //$this->messages_model->delete_message($id);
+        
+        if($this->messages_model->delete_message($id)){
+            $this->session->set_userdata( 'flash_msg_type', "success" );
+            $this->session->set_flashdata('flash_msg', 'Message Deleted Successfully.');
+        } else {
+            $this->session->set_userdata( 'flash_msg_type', "warning");
+            $this->session->set_flashdata('flash_msg', "Message can't be deleted.");
+        }
+        redirect(ADMIN_PATH . '/messages', 'refresh');
+    }
+
+
 	public function details($id){
 		$this->messages_model->update_read_status($id);
 		$data['message'] = $this->messages_model->get_message_details($id);

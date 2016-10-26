@@ -62,7 +62,7 @@
                     </div>
 
                 </div>
-                    <a onClick="return doConfirm()" href="<?=site_url(ADMIN_PATH.'/messages/delete_message/'.$message['id']) ?>" data-toggle="tooltip" class="btn btn-danger pull-right">Delete <i class="fa fa-times"></i></a>
+                    <a id="mail-delete" href="<?=site_url(ADMIN_PATH.'/messages/delete/'.$message['id']) ?>" data-toggle="tooltip" class="btn btn-danger pull-left"><i class="fa fa-times"></i> Delete</a>
             </div>
         </div>
     </div>
@@ -70,12 +70,16 @@
 
 
 <script>
-function doConfirm() {
-  msg=confirm("Are you sure you want to delete this message Permanently?");
-  if(msg != true) {
-    return false;
-  }
-}
+$('#mail-delete').on('click', function(event){
+    event.preventDefault();
+    alertify.confirm("Are you sure you want to delete this message?", function (e) {
+        if(e){
+            document.location = adminURL+'messages/delete/<?=$message['id']?>';
+        } else {            
+            return false; 
+        }        
+    }).setHeader('Confirm Delete!');     
+});
 </script>
 
 <script src="<?=base_url();?>assets/ckeditor/ckeditor_js/ckeditor.js"></script>
