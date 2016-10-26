@@ -213,8 +213,7 @@ class Settings extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['info'] = $this->settings_model->get_contact_info();
             $data['main'] = 'backend/contact_details';
-
-            $data['title'] = 'Contact Details';
+            $data['title'] = 'Contact Info';
             $this->load->view('backend/admin', $data);
         } else {
             if($this->settings_model->update_contact()) {

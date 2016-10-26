@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="butpro butstyle">
                     <div class="sub"><h2>Contact Info</h2></div>
-                    <div class="stat"><a href="<?=base_url().'backend/settings/contact_details';?>"><img src="<?=base_url()?>images/search_index.png"></a> </div>
+                    <div class="stat"><a href="<?=base_url().'backend/settings/contact_details';?>"><img src="<?=base_url()?>images/contact.png"></a> </div>
                 </div>
 
                 <div class="butpro butstyle">
