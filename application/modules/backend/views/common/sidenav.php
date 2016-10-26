@@ -28,6 +28,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?=base_url().'backend/settings/change_password';?>"><i class="fa fa-key"></i> Change Password</a>  
                     </li>
                     <li>
+                        <a href="<?=base_url().'backend/settings/email_templates';?>"><i class="fa fa-pencil"></i> Email Templates</a>  
+                    </li>
+                    <li>
                         <a href="<?=base_url().'backend/error_log';?>"><i class="fa fa-edit fa-fw"></i>Recent Error Log</a>
                     <li>
                 </ul>
