@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 ?>
                             </ul>
                         </li>
-                        <li class="footer"><a href="<?=ADMIN_PATH.'message'?>">See All Messages</a></li>
+                        <li class="footer"><a href="<?=base_url().'backend/messages'?>">See All Messages</a></li>
                     </ul>
                 </li>
                   <!-- Notifications: style can be found in dropdown.less -->
