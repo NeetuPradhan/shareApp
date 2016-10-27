@@ -12,7 +12,7 @@
     <title>Job Portal - Reset Admin Password</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?=base_url();?>assets/admin/template/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=base_url();?>assets/admin/template/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<?=base_url();?>assets/admin/template/dist/css/sb-admin-2.css" rel="stylesheet">
@@ -29,7 +29,7 @@
                         <h3 class="panel-title">Reset Your Password</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="<?=base_url();?>login/validate_admin_pw_reset_credentials">
+                        <form role="form" method="post" action="<?=base_url();?>backend/admin/validate_admin_pw_reset_credentials">
                             
                             <fieldset>
                                 <div class="form-group">

@@ -54,7 +54,7 @@ if(!function_exists('send_email')) {
         } else {
             $CI->email->from($mail_settings['receive_email'], 'The JobPortal');
         }
-        //prePrint($mail_params);
+        prePrint($mail_params);
         $CI->email->to($mail_params['to']);
         $CI->email->subject($mail_params['subject']);
         $CI->email->message($mail_params['message']);

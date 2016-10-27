@@ -102,14 +102,14 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('email','Email','required|valid_email|trim|xss_clean|callback_validate_admin_email');
 
 		if($this->form_validation->run()){
-			$this->load->model('admin/settings_model');
+			$this->load->model('backend/settings_model');
 			$mail_settings = $this->settings_model->get_email_settings();
 			$key = genRandomString("16");
 			$email = sha1(md5($this->input->post('email')));
-			$message = "<p>Reset your JobPortal Admin Password.<br>";
-			$message .= "Click <a href='".base_url()."login/validate_admin_pw_reset_credentials/$key/$email'> Here</a> to reset your password.</p>";
+			$message = "<p>Reset your password.<br>";
+			$message .= "Click <a href='".base_url()."backend/admin/validate_admin_pw_reset_credentials/$key/$email'> Here</a> to reset your password.</p>";
 			$data = array(
-					'subject' => "Reset JobPortal Admin Password",
+					'subject' => "Reset Password",
 					'message' => $message,
 					'to' => $this->input->post('email')
 					);
@@ -119,12 +119,12 @@ class Admin extends CI_Controller {
 				exit;
 			} else {
 				echo "<p>Password reset request can't be completed at the moment. Please"
-					.  "<a href='" . base_url() . "login/admin_forgot_pass'> try again</a>"
+					.  "<a href='" . base_url() . "backend/admin/admin_forgot_pass' > try again </a>"
 					.  "later.</p>";
 				exit;
 			}
 		} else {
-			$this->load->view('admin/forgot_pass');
+			$this->load->view('backend/forgot_pass');
 		}
 
 	}
@@ -160,7 +160,7 @@ class Admin extends CI_Controller {
 			if($email){
 				$this->session->set_userdata('admin_email', $email);
 				$this->session->set_userdata($credential_data);
-				$this->load->view('admin/reset_pw');
+				$this->load->view('backend/reset_pw');
 			} else {
 				echo "Invalid password reset credentials.";
 				exit;
@@ -173,7 +173,7 @@ class Admin extends CI_Controller {
 			$this->helper_model->set_admin_login_session($this->session->userdata('admin_email'));
 			$this->session->set_userdata( 'flash_msg_type', "success" );
 	        $this->session->set_flashdata('flash_msg', "Your JobPortal Admin Password has been successfully reset.");
-			redirect(base_url() . "admin/dashboard");
+			redirect(base_url() . "backend/admin/dashboard");
 		}
 	}
 	
