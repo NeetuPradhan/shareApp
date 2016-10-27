@@ -4,7 +4,7 @@ class Banner_model extends CI_Model {
 		
     function banner_list() {
         $this->db->where('del_flag', 0);
-        $this->db->order_by('id', 'ASC');
+        $this->db->order_by('id', 'DESC');
 
         $query = $this->db->get('tbl_banner');
         return $query->result_array();
