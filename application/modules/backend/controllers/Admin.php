@@ -91,9 +91,9 @@ class Admin extends CI_Controller {
 
 	public function admin_forgot_pass() {
 		if($this->helper_model->validate_admin_session()){
-			$this->load->view('admin/dashboard');	
+			$this->load->view('backend/dashboard');	
 		} else {
-			$this->load->view('admin/forgot_pass');
+			$this->load->view('backend/forgot_pass');
 		}
 	}
 	
@@ -211,6 +211,8 @@ class Admin extends CI_Controller {
         }
 		if($this->session->userdata('is_logged_in')){
 			$data['main'] = 'backend/dashboard';
+			$data['title'] = "Dashboard";
+			$data['subtitle'] = "Welcome to ShareApp Download";
 			$this->load->view('backend/admin', $data);
 		} else {
 			redirect('login');

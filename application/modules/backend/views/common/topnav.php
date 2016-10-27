@@ -143,7 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-right">
-                                <a href="<?=ADMIN_PATH.'logout'?>" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="<?=base_url().'backend/admin/logout'?>" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
