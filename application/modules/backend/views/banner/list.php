@@ -64,7 +64,7 @@
 <script src="<?=base_url().'assets/admin/template/'?>plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 <!-- Table Drag and Drop -->
-<script src="<?php echo base_url()?>assets/tablednd/js/jquery.tablednd.min.js" type="text/javascript"></script><
+<script src="<?php echo base_url()?>assets/tablednd/js/jquery.tablednd.min.js" type="text/javascript"></script>
 
 <script>
     $(function () {
@@ -76,6 +76,30 @@
               "defaultContent": "-",
               "targets": "_all"
             }]
+        });
+
+        $("#example").tableDnD({
+            onDragClass: "myDragClass",
+            onDrop: function(table, row) {
+                var rows = table.tBodies[0].rows;
+                var order = '';
+                for (var i=0; i<rows.length; i++) {
+                    order += rows[i].id+" ";
+                }
+                var sortOrder = new Array();
+                sortOrder.push({name: 'order', value: order});
+                jQuery.ajax({
+                    type: 'post',
+                    data: sortOrder,
+                    url: "<?=base_url().'backend/banner/sort';?>",
+                    dataType: 'json',
+                    success: function(data) {
+                        if(!data['status']) {
+                            alertify.error().delay(0).setContent(data['msg']).dismissOthers();
+                        }
+                    }
+                });
+            },
         });
     });
 
