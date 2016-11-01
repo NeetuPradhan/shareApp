@@ -86,6 +86,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-photo"></i> <span> News</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li>
+                        <a href="<?=base_url().'backend/news';?>">
+                            <i class="fa fa-table fa-fw"></i><span> View News</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url().'backend/news/add';?>"><i class="fa fa-plus"></i><span> Add New News</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pencil"></i> <span> Company Type</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li>
+                        <a href="<?=base_url().'backend/company_type';?>">
+                            <i class="fa fa-table fa-fw"></i><span> View Company Type</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?=base_url().'backend/company_type/add';?>"><i class="fa fa-plus"></i><span> Add New Company Type</span></a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </section>
 </aside>
