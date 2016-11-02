@@ -36,8 +36,8 @@ class Company_type extends CI_Controller {
         
         if ($this->form_validation->run() == FALSE) {
             $data['main'] = 'backend/company_type/add';
-            $data['title'] = 'Add company_type';
-            $data['subtitle'] = 'Add new company_type here';
+            $data['title'] = 'Add Company Type';
+            $data['subtitle'] = 'Add new company type here';
             $this->load->view('backend/admin', $data);
         } else {
             $this->company_type_model->add_company_type();
@@ -53,8 +53,8 @@ class Company_type extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['info'] = $this->company_type_model->get_company_type($company_type_id);
             $data['main'] = 'backend/company_type/edit';
-            $data['title'] = 'Edit company_types';
-            $data['subtitle'] = 'Update company_type here';
+            $data['title'] = 'Edit Company Type';
+            $data['subtitle'] = 'Update company type here';
             $this->load->view('backend/admin', $data);
         } else {
             $this->company_type_model->update_company_type($company_type_id);
@@ -90,6 +90,21 @@ class Company_type extends CI_Controller {
                     'message' => 'Status change Failed'
             ));
         }
+    }
+
+    function sort() {
+        $sortArr = array();
+        $sortArr =  explode(" ",trim($this->input->post('order')));
+        $count = count($sortArr);
+
+        foreach ($sortArr as $key => $value) {
+            $displayOrderNew = $count-$key;
+            $data = array('display_order' => $displayOrderNew);
+            $this->company_type_model->sort_data($sortArr[$key], $data);
+        }
+        echo json_encode(array(
+            'status' => true
+        ));
     }
 
 }

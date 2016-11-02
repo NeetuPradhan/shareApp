@@ -4,7 +4,7 @@ class Banner_model extends CI_Model {
 		
     function banner_list() {
         $this->db->where('del_flag', 0);
-        $this->db->order_by('id', 'DESC');
+        $this->db->order_by('display_order', 'DESC');
 
         $query = $this->db->get('tbl_banner');
         return $query->result_array();
@@ -17,11 +17,13 @@ class Banner_model extends CI_Model {
     }
 
     function add_banners($image) {
+        $display_order = $this->get_max('display_order');
         $data = array('title' => $this->input->post('title'),
                       'image' => $image,
                       'description' => $this->input->post('description'),
                       'added_date' => date("Y-m-d H:i:s"),
-                      'status' => $this->input->post('status')
+                      'status' => $this->input->post('status'),
+                      'display_order' => $display_order['display_order'] + 1
         );
         $this->db->insert('tbl_banner', $data);
     }
@@ -73,6 +75,16 @@ class Banner_model extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    function sort_data($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('tbl_banner', $data);
+    }
+
+    function get_max($column_name) {
+        $this->db->select_max($column_name);
+        return $this->db->get('tbl_banner')->row_array();
     }
     
 }

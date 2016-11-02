@@ -11,5 +11,11 @@ PRIMARY KEY (`id`)
 ALTER TABLE `tbl_company_type`
 MODIFY COLUMN `type`  varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL AFTER `id`;
 
+ALTER TABLE `tbl_company_type`
+MODIFY COLUMN `status`  int(1) NOT NULL AFTER `updated_date`,
+ADD COLUMN `display_order`  int(11) NOT NULL DEFAULT 0 AFTER `status`;
+
+
+
 
 

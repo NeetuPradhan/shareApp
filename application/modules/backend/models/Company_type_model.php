@@ -3,7 +3,7 @@
 class Company_type_model extends CI_Model {	
 		
     function company_type_list() {
-        $this->db->order_by('id', 'DESC');
+        $this->db->order_by('display_order', 'DESC');
 
         $query = $this->db->get('tbl_company_type');
         return $query->result_array();
@@ -16,8 +16,10 @@ class Company_type_model extends CI_Model {
     }
 
     function add_company_type() {
+        $display_order = $this->get_max('display_order');
         $data = array('type' => $this->input->post('type'),
                       'added_date' => date("Y-m-d H:i:s"),
+                      'display_order' => $display_order['display_order'] + 1,
                       'status' => $this->input->post('status')
         );
         $this->db->insert('tbl_company_type', $data);
@@ -39,11 +41,12 @@ class Company_type_model extends CI_Model {
     }
 
     function delete_company_type($company_type_id) {
-        $sql ="Delete from  tbl_company_type where id='$company_type_id'";
-        if($this->db->query($sql)){
-            return true;
+        $this->db->where('id', $company_type_id);
+        $this->db->delete('tbl_company_type');
+        if($this->db->affected_rows() > 0) {
+            return TRUE;
         } else {
-            return false;
+            return FALSE;
         }
     }
 
@@ -65,6 +68,16 @@ class Company_type_model extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    function sort_data($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('tbl_company_type', $data);
+    }
+
+    function get_max($column_name) {
+        $this->db->select_max($column_name);
+        return $this->db->get('tbl_company_type')->row_array();
     }
     
 }
