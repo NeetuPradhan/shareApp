@@ -104,5 +104,20 @@ class Cms extends CI_Controller {
             ));
         }
     }
+
+    function sort() {
+        $sortArr = array();
+        $sortArr =  explode(" ",trim($this->input->post('order')));
+        $count = count($sortArr);
+
+        foreach ($sortArr as $key => $value) {
+            $displayOrderNew = $count-$key;
+            $data = array('display_order' => $displayOrderNew);
+            $this->cms_model->sort_data($sortArr[$key], $data);
+        }
+        echo json_encode(array(
+            'status' => true
+        ));
+    }
 }
 

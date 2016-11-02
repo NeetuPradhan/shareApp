@@ -156,7 +156,7 @@ class Banner extends CI_Controller {
             $this->banner_model->sort_data($sortArr[$key], $data);
         }
         echo json_encode(array(
-                'status' => true
+            'status' => true
         ));
     }
 

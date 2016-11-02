@@ -4,7 +4,7 @@ class News_model extends CI_Model {
 		
     function news_list() {
         $this->db->where('del_flag', 0);
-        $this->db->order_by('id', 'DESC');
+        $this->db->order_by('display_order', 'DESC');
 
         $query = $this->db->get('tbl_news');
         return $query->result_array();
@@ -17,9 +17,11 @@ class News_model extends CI_Model {
     }
 
     function add_news() {
+        $display_order = $this->get_max('display_order');
         $data = array('title' => $this->input->post('title'),
                       'description' => $this->input->post('description'),
                       'added_date' => date("Y-m-d H:i:s"),
+                      'display_order' => $display_order['display_order'] + 1,
                       'status' => $this->input->post('status')
         );
         $this->db->insert('tbl_news', $data);
@@ -68,6 +70,16 @@ class News_model extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    function sort_data($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('tbl_news', $data);
+    }
+
+    function get_max($column_name) {
+        $this->db->select_max($column_name);
+        return $this->db->get('tbl_news')->row_array();
     }
     
 }

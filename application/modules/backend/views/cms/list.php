@@ -83,6 +83,31 @@
               "targets": "_all"
             }]
         });
+
+        $("#example").tableDnD({
+            onDragClass: "myDragClass",
+            onDrop: function(table, row) {
+                var rows = table.tBodies[0].rows;
+                var order = '';
+                for (var i=0; i<rows.length; i++) {
+                    order += rows[i].id+" ";
+                }
+                var sortOrder = new Array();
+                sortOrder.push({name: 'order', value: order});
+                jQuery.ajax({
+                    type: 'post',
+                    data: sortOrder,
+                    url: "<?=base_url().'backend/cms/sort';?>",
+                    dataType: 'json',
+                    success: function(data) {
+                        if(!data['status']) {
+                            alertify.error().delay(0).setContent(data['msg']).dismissOthers();
+                        }
+                    }
+                });
+            },
+        });
+        
     });
 
     $(document).ready(function() {

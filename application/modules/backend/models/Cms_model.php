@@ -4,7 +4,7 @@ class Cms_model extends CI_Model {
 		
     function cms_list() {
         $this->db->where('del_flag', 0);
-        $this->db->order_by('id', 'DESC');
+        $this->db->order_by('display_order', 'DESC');
 
         $query = $this->db->get('tbl_cms');
         return $query->result_array();
@@ -17,12 +17,14 @@ class Cms_model extends CI_Model {
     }
 
     function add_cms() {
+        $display_order = $this->get_max('display_order');
         $data = array('title' => $this->input->post('title'),
                       'head_text' => $this->input->post('head_text'),
                       'content' => $this->input->post('content'),
                       'meta_keywords' => $this->input->post('meta_keywords'),
                       'meta_description' => $this->input->post('meta_description'),
                       'added_date' => date("Y-m-d H:i:s"),
+                      'display_order' => $display_order['display_order'] + 1,
                       'status' => $this->input->post('status')
         );
         $this->db->insert('tbl_cms', $data);
@@ -74,6 +76,16 @@ class Cms_model extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    function sort_data($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('tbl_cms', $data);
+    }
+
+    function get_max($column_name) {
+        $this->db->select_max($column_name);
+        return $this->db->get('tbl_cms')->row_array();
     }
     
 }
