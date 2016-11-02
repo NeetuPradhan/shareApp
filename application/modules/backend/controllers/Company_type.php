@@ -25,8 +25,8 @@ class Company_type extends CI_Controller {
 
         $data['company_type'] = $this->company_type_model->company_type_list($config['per_page'], $offset);
         $data['links'] = $this->pagination->create_links();
-        $data['title'] = 'company_type';
-        $data['subtitle'] = 'Manage your company_type images here.';
+        $data['title'] = 'Company Type';
+        $data['subtitle'] = 'Manage your company type images here.';
 
         $this->load->view('backend/admin', $data);
     }

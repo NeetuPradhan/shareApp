@@ -48,6 +48,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="butpro butstyle">
                     <div class="sub"><h2>Banner Images</h2></div>
                     <div class="stat"><a href="<?=base_url().'backend/banner';?>"><img src="<?=base_url()?>images/photo_gallery.png"></a> </div>
+                </div>
+                <div class="butpro butstyle">
+                    <div class="sub"><h2>News</h2></div>
+                    <div class="stat"><a href="<?=base_url().'backend/news';?>"><img src="<?=base_url()?>images/news.png"></a> </div>
+                </div> 
+                <div class="butpro butstyle">
+                    <div class="sub"><h2>Company Type</h2></div>
+                    <div class="stat"><a href="<?=base_url().'backend/company_type';?>"><img src="<?=base_url()?>images/services.png"></a> </div>
                 </div>     
             </div>
         </div>
