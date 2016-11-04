@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-share"></i> <span>Settings</span>
+                    <i class="glyphicon glyphicon-cog"></i> <span>Settings</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu" style="display: none;">
@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-photo"></i> <span> News</span>
+                    <i class="glyphicon glyphicon-file"></i> <span> News</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu" style="display: none;">
@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-pencil"></i> <span> Company Type</span>
+                    <i class="glyphicon glyphicon-briefcase"></i> <span> Company Type</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu" style="display: none;">
