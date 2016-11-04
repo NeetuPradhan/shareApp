@@ -19,6 +19,7 @@ class Appconfig {
     public function __construct() {
         $this->CI = get_instance();
         $this->read_site_settings();
+        $this->read_contact_us();
          
     }
 
@@ -30,6 +31,20 @@ class Appconfig {
 
     private function read_site_settings() {
         $query = $this->CI->db->get('tbl_site_settings');
+        if ($query->num_rows() > 0) {
+            $load = $query->row();
+            if(sizeof($load)>0){
+                foreach ($load as $item => $value) {
+                    $this->CI->config->set_item($item, stripslashes($value));
+                }
+            }
+        }
+        
+    }
+
+
+    private function read_contact_us() {
+        $query = $this->CI->db->get('tbl_contact_us');
         if ($query->num_rows() > 0) {
             $load = $query->row();
             if(sizeof($load)>0){
