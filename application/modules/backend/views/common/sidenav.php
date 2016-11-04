@@ -118,6 +118,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="<?=base_url().'backend/user';?>">
+                    <i class="glyphicon glyphicon-user"></i> <span>User Management</span>
+                </a>
+            </li>
         </ul>
     </section>
 </aside>
