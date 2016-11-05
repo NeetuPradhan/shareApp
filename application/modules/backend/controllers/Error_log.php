@@ -1,6 +1,6 @@
 <?php
 
-class Error_log extends CI_Controller {
+class Error_log extends MX_Controller {
 
     function __construct()
     {

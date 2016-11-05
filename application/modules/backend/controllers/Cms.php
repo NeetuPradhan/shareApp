@@ -1,12 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cms extends CI_Controller {
+class Cms extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('backend/cms_model');
-        $this->load->library('form_validation');
         if(!$this->helper_model->validate_admin_session()){
           redirect(base_url() . 'backend');
         }

@@ -1,14 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends MX_Controller {
 
 	var $hash_email; var $hash_key;
 
 	public function __construct()
 	{
 	  	parent::__construct();
-	  	$this->load->library('form_validation');
 	  	$this->load->helper('cookie');
 	  	$this->load->model('login_model');
 	}
@@ -131,7 +130,6 @@ class Admin extends CI_Controller {
 
 
 	public function validate_admin_email() {
-
 		if($this->login_model->is_valid_admin_email()){
 			return true;
 		} else {

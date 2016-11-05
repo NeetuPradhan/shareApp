@@ -1,12 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Settings extends CI_Controller {
+class Settings extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('backend/settings_model');
-        $this->load->library('form_validation');
         $this->load->helper('file');
         if(!$this->helper_model->validate_admin_session()){
           redirect(base_url() . 'backend');

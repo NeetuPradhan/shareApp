@@ -1,12 +1,11 @@
 <?php
 
-class User extends CI_Controller {
+class User extends MX_Controller {
 
     function __construct()
     {
         parent::__construct();
         $this->load->model('backend/user_model');
-        $this->load->library('form_validation');
         if(!$this->helper_model->validate_admin_session()){
           redirect(base_url() . 'admin');
         }
