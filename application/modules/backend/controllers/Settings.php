@@ -5,6 +5,7 @@ class Settings extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->form_validation->CI =& $this;
         $this->load->model('backend/settings_model');
         $this->load->helper('file');
         if(!$this->helper_model->validate_admin_session()){

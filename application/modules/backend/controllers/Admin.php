@@ -8,6 +8,7 @@ class Admin extends MX_Controller {
 	public function __construct()
 	{
 	  	parent::__construct();
+	  	$this->form_validation->CI =& $this;
 	  	$this->load->helper('cookie');
 	  	$this->load->model('login_model');
 	}

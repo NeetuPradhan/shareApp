@@ -5,6 +5,7 @@ class Company_type extends MX_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->form_validation->CI =& $this;
         $this->load->model('backend/company_type_model');
         if(!$this->helper_model->validate_admin_session()){
           redirect(base_url() . 'backend');
