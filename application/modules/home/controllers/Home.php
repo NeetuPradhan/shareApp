@@ -12,12 +12,14 @@ class Home extends MX_Controller {
 
 	public function index() {
 		$data['title'] = 'Home';
+		$data['module'] = 'home';
+		$data['view_file'] = 'home';
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
 							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
 						);
-		$this->load->view('home', $data);
+		echo Modules::run('Template/render_html', $data);
 	}
 
 

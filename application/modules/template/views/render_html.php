@@ -25,9 +25,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    <?php echo Modules::run('Template/load_css'); ?>
     </head>
     <body>
-    	<?php echo Modules::run('Template/topnav'); ?>
-    	<?php echo Modules::run('Template/content'); ?>
-    	<?php echo Modules::run('Template/footer'); ?>
-    	<?php echo Modules::run('Template/load_js'); ?>
+    	<?php echo Modules::run('template/topnav'); ?>
+    	<?php $this->load->view($module.'/'.$view_file) ?>
+    	<?php echo Modules::run('template/footer'); ?>
+    	<?php echo Modules::run('template/load_js'); ?>
     </body>
     </html>

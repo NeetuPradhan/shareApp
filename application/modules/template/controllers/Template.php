@@ -10,8 +10,8 @@ class Template extends MX_Controller {
 	}
 
 	
-	public function header($data=array()) {
-			$this->load->view('header', $data);
+	public function render_html($data=array()) {
+			$this->load->view('render_html', $data);
 	}
 
 
