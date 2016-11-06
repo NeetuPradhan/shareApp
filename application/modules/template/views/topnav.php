@@ -11,8 +11,13 @@
                             <li>
                                 <a href="/ContactUs.aspx">Contact Us</a>
                             </li>
-                            <li id="ctl00_liLogout">
-                                <a href="/Logout.aspx">Log Out</a>
+                            <li>
+                            <?php 
+                            if($this->helper_model->validate_user_session()){?>
+                                <a href="">Log Out</a>
+                            <?php  } else { ?>
+                                <a href="">Log In</a>
+                            <?php } ?>
                             </li>
                         </ul>
                     </div>
@@ -219,11 +224,11 @@
                                 </li>
                             </ul>
                         </li>
-                        
                         <li class="dropdown" id="ctl00_liUser">                                
+                            <?php if($this->helper_model->validate_user_session()){?>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">                                    
                                 <span class="icon-user"></span>
-                                <span class="hidden-md" id="ctl00_lblUsername">acharya.rajanpkr</span>&nbsp;<i class="icon-angle-down"></i>                                   
+                                <span class="hidden-md" id="ctl00_lblUsername">Welcome, <?=$this->session->userdata('name');?></span>&nbsp;<i class="icon-angle-down"></i>                                   
                             </a>                                
                             <ul class="dropdown-menu">
                                 <li>
@@ -235,6 +240,9 @@
                                 <li class="divider"></li>
                                 <li><a href="/Logout.aspx">Log Out</a></li>
                             </ul>
+                            <?php }else {?>
+                                <a href="<?php echo getAuthUrl().'login'?>">Log in</a>
+                            <?php }?>
                         </li>
                     </ul>
                 </div>

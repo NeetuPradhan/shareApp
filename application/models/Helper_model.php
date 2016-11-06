@@ -79,6 +79,36 @@ class Helper_model extends CI_Model {
 
     }
 
+    public function set_user_login_session($email){
+        $user_details = $this->db->get_where('tbl_users', array('email' => $email))->row_array();
+        $name = $user_details["f_name"]." ".$user_details["l_name"];
+        $data = array(
+                    'user_email' => $email,
+                    'user_pw' => $user_details['password'],
+                    'name' => $name,
+                    'is_Login' => 1,
+                    'user_id' => $user_details["id"],
+                );
+        $this->session->set_userdata($data);
+    }
+
+    public function validate_user_session(){
+        if($this->session->userdata('user_email') && $this->session->userdata('user_pw')) {
+            $options = array(
+                            'email' => $this->session->userdata('user_email'),
+                            );
+            $this->db->where($options);
+            $this->db->select("password");
+            $db_pw = $this->db->get('tbl_users')->row_array();
+            if($this->decrypt_me($this->session->userdata('user_pw')) === $this->decrypt_me($db_pw["password"]) && $this->session->userdata('user_type') == 1){
+                return true;
+            } else{
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

@@ -38,6 +38,10 @@ class Template extends MX_Controller {
 	public function footer($data=array()) {
 		$this->load->view('footer', $data);
 	}
+
+	public function alert($data=array()) {
+		$this->load->view('alert', $data);
+	}
 	
 
 }

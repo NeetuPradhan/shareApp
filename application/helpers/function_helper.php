@@ -9,7 +9,25 @@ if(!function_exists('prePrint')) {
 }
 
 if(!function_exists('getBackendUrl')){
-	function getBackendUrl($file=true) {
+	function getBackendUrl() {
 		return base_url().'backend/';
+	}
+}
+
+if(!function_exists('getRegisterUrl')){
+	function getRegisterUrl() {
+		return base_url().'register/';
+	}
+}
+
+if(!function_exists('getHomeUrl')){
+	function getHomeUrl() {
+		return base_url().'home/';
+	}
+}
+
+if(!function_exists('getAuthUrl')){
+	function getAuthUrl() {
+		return base_url().'auth/';
 	}
 }
