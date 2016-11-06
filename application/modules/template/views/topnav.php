@@ -14,9 +14,9 @@
                             <li>
                             <?php 
                             if($this->helper_model->validate_user_session()){?>
-                                <a href="">Log Out</a>
+                                <a href="<?php echo getAuthUrl().'login/logout'?>">Log Out</a>
                             <?php  } else { ?>
-                                <a href="">Log In</a>
+                                <a href="<?php echo getAuthUrl().'login';?>">Log In</a>
                             <?php } ?>
                             </li>
                         </ul>
@@ -24,27 +24,22 @@
                 </div>
             </div>
         </div>
-
         <div class="logobar">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="/Index.aspx"><img class="img-responsive" src="<?=base_url()?>/assets/front/Content/images/merolagani.png"></a>
+                        <a href="<?php echo getHomeUrl();?>"><img class="img-responsive" src="<?=base_url()?>/assets/front/Content/images/merolagani.png"></a>
                     </div>
                     <div id="ctl00_A1_divAdvertisement">
-    <div class="col-xs-8" id="ctl00_A1_divA1">
-        <a target="_blank" href="http://www.globalimecapital.com/">
-            <img class="img-responsive" src="<?=base_url()?>/assets/front/content/adverts/c9a2947a-8fa9-41b9-ab02-e4a1c8f8545f.gif">
-        </a>
-    </div>
-
-    
-</div>
-
+                        <div class="col-xs-8" id="ctl00_A1_divA1">
+                            <a target="_blank" href="http://www.globalimecapital.com/">
+                                <img class="img-responsive" src="<?=base_url()?>/assets/front/content/adverts/c9a2947a-8fa9-41b9-ab02-e4a1c8f8545f.gif">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
         <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
@@ -54,7 +49,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
                     <div class="navbar-brand visible-xs">
                         <div class="dropdown search-form">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -64,24 +58,17 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <div onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_lbtnSearchHeader')" class="form-inline">
-	 
-                                        
-
-<autosuggest>
-    <input type="hidden" value="0" id="ctl00_AutoSuggest1_hdnAutoSuggest" name="ctl00$AutoSuggest1$hdnAutoSuggest">
-    <input type="text" onkeyup="AutoSuggest.clearValue(event,this);" onkeypress="AutoSuggest.getAutoSuggestDataByElement(&quot;Company&quot;,this);" placeholder="Company name or symbol" onblur="" data-bound="0" autocomplete="off" class="form-control form-control-inline" title="Type company name or stock symbol" tabindex="-1" id="ctl00_AutoSuggest1_txtAutoSuggest" maxlength="255" name="ctl00$AutoSuggest1$txtAutoSuggest">
-</autosuggest>
-
+                                        <autosuggest>
+                                            <input type="hidden" value="0" id="ctl00_AutoSuggest1_hdnAutoSuggest" name="ctl00$AutoSuggest1$hdnAutoSuggest">
+                                            <input type="text" onkeyup="AutoSuggest.clearValue(event,this);" onkeypress="AutoSuggest.getAutoSuggestDataByElement(&quot;Company&quot;,this);" placeholder="Company name or symbol" onblur="" data-bound="0" autocomplete="off" class="form-control form-control-inline" title="Type company name or stock symbol" tabindex="-1" id="ctl00_AutoSuggest1_txtAutoSuggest" maxlength="255" name="ctl00$AutoSuggest1$txtAutoSuggest">
+                                        </autosuggest>
                                         <a href="javascript:__doPostBack('ctl00$lbtnSearchHeader','')" data-trigger="company-detail" class="btn btn-primary" title="Search Company Detail" tabindex="-1" id="ctl00_lbtnSearchHeader" onclick="return false;"><span class="icon-search"></span> Search</a>                                                              
-                                    
-</div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="">
@@ -91,34 +78,34 @@
                         </li>
                         <li class="dropdown">
                             <a title="Market" data-toggle="dropdown" class="dropdown-toggle" href="#">Market <b class="icon-angle-down"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li class="">
-                                        <a href="/LatestMarket.aspx">Live Trading</a>
-                                    </li>
-                                    <li class="">
-                                        <a href="/StockQuote.aspx">Todays Shareprice</a>
-                                    </li>
-                                    <li class="">
-                                        <a href="/Floorsheet.aspx">Floorsheet</a>
-                                    </li>                                
-                                    <li class="">
-                                        <a href="/Indices.aspx">Indices</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-header">Market Summary</li>
-                                    <li class="">
-                                        <a href="/MarketSummary.aspx?type=gainers">Top Gainers</a>
-                                    </li> 
-                                    <li class="">
-                                        <a href="/MarketSummary.aspx?type=losers">Top Losers</a>
-                                    </li> 
-                                    <li class="">
-                                        <a href="/MarketSummary.aspx?type=turnovers">Top Turnovers</a>
-                                    </li> 
-                                    <li class="">
-                                        <a href="/MarketSummary.aspx?type=sectors">Top Sectors</a>
-                                    </li>    
-                                </ul>
+                            <ul class="dropdown-menu">
+                                <li class="">
+                                    <a href="/LatestMarket.aspx">Live Trading</a>
+                                </li>
+                                <li class="">
+                                    <a href="/StockQuote.aspx">Todays Shareprice</a>
+                                </li>
+                                <li class="">
+                                    <a href="/Floorsheet.aspx">Floorsheet</a>
+                                </li>                                
+                                <li class="">
+                                    <a href="/Indices.aspx">Indices</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Market Summary</li>
+                                <li class="">
+                                    <a href="/MarketSummary.aspx?type=gainers">Top Gainers</a>
+                                </li> 
+                                <li class="">
+                                    <a href="/MarketSummary.aspx?type=losers">Top Losers</a>
+                                </li> 
+                                <li class="">
+                                    <a href="/MarketSummary.aspx?type=turnovers">Top Turnovers</a>
+                                </li> 
+                                <li class="">
+                                    <a href="/MarketSummary.aspx?type=sectors">Top Sectors</a>
+                                </li>    
+                            </ul>
                         </li>
                         <li class="">
                             <a href="/NewsList.aspx">News</a>
@@ -198,9 +185,7 @@
                         <li id="ctl00_liForum">
                             <a target="_blank" href="/forum">Forum</a>
                         </li>
-                        
                     </ul>
-
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown search-form">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">
@@ -210,17 +195,12 @@
                             <ul class="dropdown-menu">
                                 <li>
                                     <div onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_lbtnSearch')" class="form-inline">
-	 
-                                        
-
-<autosuggest>
-    <input type="hidden" value="0" id="ctl00_ASCompany_hdnAutoSuggest" name="ctl00$ASCompany$hdnAutoSuggest">
-    <input type="text" onkeyup="AutoSuggest.clearValue(event,this);" onkeypress="AutoSuggest.getAutoSuggestDataByElement(&quot;Company&quot;,this);" placeholder="Company name or symbol" onblur="" data-bound="1" autocomplete="off" class="form-control form-control-inline ui-autocomplete-input" title="Type company name or stock symbol" tabindex="-1" id="ctl00_ASCompany_txtAutoSuggest" maxlength="255" name="ctl00$ASCompany$txtAutoSuggest">
-</autosuggest>
-
+                                        <autosuggest>
+                                            <input type="hidden" value="0" id="ctl00_ASCompany_hdnAutoSuggest" name="ctl00$ASCompany$hdnAutoSuggest">
+                                            <input type="text" onkeyup="AutoSuggest.clearValue(event,this);" onkeypress="AutoSuggest.getAutoSuggestDataByElement(&quot;Company&quot;,this);" placeholder="Company name or symbol" onblur="" data-bound="1" autocomplete="off" class="form-control form-control-inline ui-autocomplete-input" title="Type company name or stock symbol" tabindex="-1" id="ctl00_ASCompany_txtAutoSuggest" maxlength="255" name="ctl00$ASCompany$txtAutoSuggest">
+                                        </autosuggest>
                                         <a href="javascript:__doPostBack('ctl00$lbtnSearch','')" data-trigger="company-detail" class="btn btn-primary" title="Search Company Detail" tabindex="-1" id="ctl00_lbtnSearch" onclick="return false;"><span class="icon-search"></span> Search</a>                                                              
-                                    
-</div>
+                                    </div>
                                 </li>
                             </ul>
                         </li>
@@ -248,5 +228,5 @@
                 </div>
             </div>
         </nav>
-        </div>
-        </body>
+    </div>
+</body>
