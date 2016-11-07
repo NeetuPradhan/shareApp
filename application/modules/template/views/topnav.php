@@ -212,10 +212,10 @@
                             </a>                                
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="<?php echo getRegisterUrl().'member/update_info'?>">Edit Account</a>
+                                    <a href="<?php echo getMemberUrl().'update_info'?>">Edit Account</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo getRegisterUrl().'member/change_password'?>">Change Password</a>
+                                    <a href="<?php echo getMemberUrl().'change_password'?>">Change Password</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li><a href="<?php echo getAuthUrl().'login/logout'?>">Log Out</a></li>

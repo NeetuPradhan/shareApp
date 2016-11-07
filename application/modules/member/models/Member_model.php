@@ -32,7 +32,7 @@ class Member_model extends CI_Model {
         $subject = $message['subject'];
         $emailbody = $message['content'];
         $hash_email = sha1(md5($this->input->post('email')));
-        $confirm = "Click <a href='".getRegisterUrl()."member/activation_process/$activation_code/$hash_email'> here</a> to activate your JobPortal account";
+        $confirm = "Click <a href='".getMemberUrl()."activation_process/$activation_code/$hash_email'> here</a> to activate your JobPortal account";
         $parseElement = array(
             "USERNAME" => $this->input->post("f_name"),
             "SITENAME" => 'JobPortal',

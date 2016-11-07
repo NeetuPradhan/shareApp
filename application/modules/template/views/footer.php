@@ -59,7 +59,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <a class="btn btn-default btn-lg" href="/FreeUserRegistration.aspx">Create Free Account</a>
+                        <a class="btn btn-default btn-lg" href="<?php echo getMemberUrl();?>">Create Free Account</a>
                     </div>
                 </div>
             </div>

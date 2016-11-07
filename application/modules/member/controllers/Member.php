@@ -12,10 +12,10 @@ class Member extends MX_Controller {
 	}
 
 	public function index() {
-		self::add();
+		self::register();
 	}
 
-	public function add() {
+	public function register() {
 		$this->form_validation->set_rules('f_name','First Name','required|xss_clean');
 		$this->form_validation->set_rules('l_name','Last Name','required|xss_clean');
 		$this->form_validation->set_rules('gender','Gender','required|xss_clean');
@@ -44,7 +44,7 @@ class Member extends MX_Controller {
 			}
 		}
 		$data['title'] = 'Register';
-		$data['module'] = 'register';
+		$data['module'] = 'member';
 		$data['view_file'] = 'register_form';
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
@@ -89,7 +89,7 @@ class Member extends MX_Controller {
 			}
 		}
  		$data['title'] = 'Edit Account';
-		$data['module'] = 'register';
+		$data['module'] = 'member';
 		$data['view_file'] = 'edit_info';
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
@@ -117,7 +117,7 @@ class Member extends MX_Controller {
         }
 
         $data['title'] = 'Change Password';
-		$data['module'] = 'register';
+		$data['module'] = 'member';
 		$data['view_file'] = 'change_password';
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(

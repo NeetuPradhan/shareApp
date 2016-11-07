@@ -14,9 +14,9 @@ if(!function_exists('getBackendUrl')){
 	}
 }
 
-if(!function_exists('getRegisterUrl')){
-	function getRegisterUrl() {
-		return base_url().'register/';
+if(!function_exists('getMemberUrl')){
+	function getMemberUrl() {
+		return base_url().'member/';
 	}
 }
 

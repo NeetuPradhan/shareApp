@@ -5,7 +5,7 @@
         </div>
     </div>
     <div>
-        <form role="form" id="frmRegister" method="post" action="<?=getRegisterUrl().'member/update_info'?>">
+        <form role="form" id="frmRegister" method="post" action="<?=getMemberUrl().'update_info'?>">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">

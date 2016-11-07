@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row">
-        <form role="form"  method="post" action="<?=getRegisterUrl().'member/change_password'?>">
+        <form role="form"  method="post" action="<?=getMemberUrl().'change_password'?>">
             <div class="date-label">
                 <small class="muted">(Fields marked with * are required)</small>
             </div>
