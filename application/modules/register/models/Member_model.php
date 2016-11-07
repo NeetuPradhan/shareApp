@@ -83,9 +83,64 @@ class Member_model extends CI_Model {
         return $query->row_array();
     }
 
-    public function hard_delete_user($id){
+    function hard_delete_user($id){
         $this->db->where('id', $id);
         $this->db->delete('tbl_users');
+    }
+
+    function get_user_detail($id) {
+        return $this->db->get_where('tbl_users', array('id' => $id))->row_array();
+    }
+
+    function update_user($user_id) {
+        $data = array(
+                    'f_name' => $this->input->post('f_name'),
+                    'l_name' => $this->input->post('l_name'),
+                    'email' => $this->input->post('email'),
+                    'gender' => $this->input->post('gender'),
+                    'address' => $this->input->post('address'),
+                    'city' => $this->input->post('city'),
+                    'mobile' => $this->input->post('mobile'),
+                    'phone' => $this->input->post('phone'),
+            );
+
+        $this->db->where('id', $user_id);
+        if($this->db->update('tbl_users', $data)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function update_password($password) {
+        $data = array(
+            'password' => $password
+            );
+
+        $this->db->where('email', $this->session->userdata('user_email'));
+
+        if($this->db->update('tbl_users', $data)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function verify_current_pw() {
+        $this->db->where('email', $this->session->userdata('user_email'));
+        $query = $this->db->get_where('tbl_users', array('email = ' => $this->session->userdata('user_email')));
+
+        if($query->num_rows() == 1){
+            $row = $query->row_array(); 
+            $pass = $this->helper_model->decrypt_me($row['password']);
+            if($this->input->post('cur_password') == $pass){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 }
 ?>

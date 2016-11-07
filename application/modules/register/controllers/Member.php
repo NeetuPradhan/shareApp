@@ -6,6 +6,7 @@ class Member extends MX_Controller {
 	public function __construct()
 	{
 	  	parent::__construct();
+	  	$this->form_validation->CI =& $this;
 	  	$this->load->library('form_validation');
 	  	$this->load->model('member_model');
 	}
@@ -64,5 +65,75 @@ class Member extends MX_Controller {
 			echo "Invalid Credentials"; exit;
 		}
  	}
+
+ 	public function update_info() {
+ 		$user_id = $this->session->userdata('user_id');
+ 		$this->form_validation->set_rules('f_name','First Name','required|xss_clean');
+		$this->form_validation->set_rules('l_name','Last Name','required|xss_clean');
+		$this->form_validation->set_rules('gender','Gender','required|xss_clean');
+		$this->form_validation->set_rules('mobile','Mobile','required|xss_clean');
+		$this->form_validation->set_rules('phone','Phone','xss_clean');
+		$this->form_validation->set_rules('address','Address','xss_clean');
+		$this->form_validation->set_rules('city','City','xss_clean');
+
+ 		$data["info"] = $this->member_model->get_user_detail($user_id);
+
+		if($this->form_validation->run()){
+			if($this->member_model->update_user($user_id)){
+	            $this->session->set_userdata( 'user_flash_msg_type', "success" );
+	            $this->session->set_flashdata('user_flash_msg', 'Account Updated Successfully');
+	            redirect(getHomeUrl(), 'refresh');
+			} else {
+				$this->session->set_userdata( 'user_flash_msg_type', "danger" );
+	            $this->session->set_flashdata('user_flash_msg', 'Sorry, Unable to update.');
+			}
+		}
+ 		$data['title'] = 'Edit Account';
+		$data['module'] = 'register';
+		$data['view_file'] = 'edit_info';
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
+ 	}
+
+ 	public function change_password() {
+		$this->form_validation->set_rules('cur_password', 'Current Password', 'required|xss_clean|callback_verify_current_pass');
+        $this->form_validation->set_rules('new_password', 'Password', 'required|xss_clean|min_length[6]|max_length[64]');
+        $this->form_validation->set_rules('c_password', 'Confirm Password', 'required|xss_clean|matches[new_password]');
+
+        if ($this->form_validation->run()) {
+            $password = $this->helper_model->encrypt_me($this->input->post('new_password'));
+            if($this->member_model->update_password($password)) {
+                $this->session->set_userdata( 'user_flash_msg_type', "success" );
+                $this->session->set_flashdata('user_flash_msg', 'Password Changed Successfully');
+                redirect(getHomeUrl());
+            } else {
+                $this->session->set_userdata( 'user_flash_msg_type', "danger" );
+                $this->session->set_flashdata('user_flash_msg', 'Sorry, Unable to Change the Password');
+            }
+        }
+
+        $data['title'] = 'Change Password';
+		$data['module'] = 'register';
+		$data['view_file'] = 'change_password';
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
+	}
+
+	public function verify_current_pass() {
+        if($this->member_model->verify_current_pw()) {
+            return true;
+        } else {
+            $this->form_validation->set_message('verify_current_pass','Current Password Incorrect');
+            return false;
+        }
+    }
 
 }

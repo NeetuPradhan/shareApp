@@ -212,13 +212,13 @@
                             </a>                                
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/EditAccount.aspx?type=ea">Edit Account</a>
+                                    <a href="<?php echo getRegisterUrl().'member/update_info'?>">Edit Account</a>
                                 </li>
                                 <li>
-                                    <a href="/EditAccount.aspx?type=pw">Change Password</a>
+                                    <a href="<?php echo getRegisterUrl().'member/change_password'?>">Change Password</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="/Logout.aspx">Log Out</a></li>
+                                <li><a href="<?php echo getAuthUrl().'login/logout'?>">Log Out</a></li>
                             </ul>
                             <?php }else {?>
                                 <a href="<?php echo getAuthUrl().'login'?>">Log in</a>
