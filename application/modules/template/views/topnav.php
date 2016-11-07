@@ -72,7 +72,7 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="">
-                            <a href="/Index.aspx">
+                            <a href="<?php echo getHomeUrl();?>">
                                 <span style="line-height:20px" class="icon-home icon-2x"></span>
                             </a>
                         </li>
