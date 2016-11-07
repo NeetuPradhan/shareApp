@@ -110,6 +110,19 @@ class Helper_model extends CI_Model {
             return false;
         }
     }
+
+    public function is_user_registered($email){
+        $options = array(
+                    'email' => $email
+                    );
+        $this->db->where($options);
+        $this->db->from('tbl_users');
+        if($this->db->count_all_results() > 0){
+            return true;
+        } else{
+            return false;
+        }
+    }
 }
 
 ?>

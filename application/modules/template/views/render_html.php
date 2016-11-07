@@ -27,8 +27,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <body>
     	<?php echo Modules::run('template/topnav'); ?>
     	<?php echo Modules::run('template/alert'); ?>
+    	<?php echo Modules::run('template/load_js'); ?>
     	<?php $this->load->view($module.'/'.$view_file) ?>
     	<?php echo Modules::run('template/footer'); ?>
-    	<?php echo Modules::run('template/load_js'); ?>
     </body>
     </html>

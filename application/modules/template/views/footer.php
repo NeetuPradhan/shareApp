@@ -74,7 +74,7 @@
                         <ul class="list-inline">
                             <li><a href="/Disclaimer.aspx">Disclaimer, Privacy &amp; Terms of Use</a></li>
                             <li><a href="/AboutUs.aspx">About Us</a></li>
-                            <li><a href="/ContactUs.aspx">Contact Us</a></li>
+                            <li><a href="<?php echo getHomeUrl()?>contact_us">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

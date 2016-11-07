@@ -346,19 +346,6 @@ if(!function_exists('multilevel_select_category')) {
     }
 }
 
-
-if (!function_exists('prePrint')) {
-    function prePrint($arrData, $exit = TRUE)
-    {
-        echo "<pre>";
-        print_r($arrData);
-        if ($exit === TRUE) {
-            die();
-        }
-    }
-}
-
-
 if(!function_exists('multilevel_select_job_category')) {
     function multilevel_select_job_category($array,$parent_id = 0,$parents = array(), $level=0, $selected='') {
         static $k=0;

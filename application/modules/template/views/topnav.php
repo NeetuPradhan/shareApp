@@ -9,7 +9,7 @@
                             <li><i class="icon-envelope"></i> <?=$this->config->item('email')?></li>
                             <li><i class="icon-phone"></i> <?=$this->config->item('phone')?></li>
                             <li>
-                                <a href="/ContactUs.aspx">Contact Us</a>
+                                <a href="<?php echo getHomeUrl()?>contact_us">Contact Us</a>
                             </li>
                             <li>
                             <?php 
