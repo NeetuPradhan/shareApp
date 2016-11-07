@@ -37,7 +37,7 @@ class Home extends MX_Controller {
 		if($this->form_validation->run()){
 			if($this->home_model->insert_contact_message()){
 				$this->session->set_userdata( 'user_flash_msg_type', "success" );
-	            $this->session->set_flashdata('user_flash_msg', "Thanks for contacting JobPortal. We will get back to you as soon as we can.");
+	            $this->session->set_flashdata('user_flash_msg', "Thanks for contacting. We will get back to you as soon as we can.");
 	            redirect(base_url() . 'contact_us', 'refresh');
 			} else {
 				$this->session->set_userdata( 'user_flash_msg_type', "failure" );
@@ -77,6 +77,23 @@ class Home extends MX_Controller {
     	} else {
     		return true;
     	}
+    }
+
+    public function footer_contents($title){
+        $this->session->set_userdata('referred_from', current_url());
+		$data["cms_contents"] = $this->home_model->get_footer_contents($title);
+		$data['title'] = 'Home';
+		$data['module'] = 'home';
+		$data['view_file'] = $title;
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
+
+		// $this->template->partial->view("cms", $data, $overwrite=FALSE);
+		// $this->template->publish('cms');
     }
 	
 

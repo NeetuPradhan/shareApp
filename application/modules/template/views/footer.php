@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-sm-4 col-md-3">
                         <ul class="nav-stacked">                        
-                            <li><a href="/ContactUs.aspx" tabindex="-1">Contact Us</a></li>                                
+                            <li><a href="<?php echo getHomeUrl()?>contact_us" tabindex="-1">Contact Us</a></li>                                
                             <li><a target="_blank" href="/Uploads/Help.pdf" tabindex="-1">Help Docs</a></li>
                             <li><a target="_blank" href="/VideoTutorials.aspx" tabindex="-1">Video Tutorials</a></li>
                             <li><a href="/BankAccounts.aspx" tabindex="-1">Bank Accounts</a></li>
@@ -72,8 +72,9 @@
                     </div>
                     <div class="col-sm-6 text-right">
                         <ul class="list-inline">
-                            <li><a href="/Disclaimer.aspx">Disclaimer, Privacy &amp; Terms of Use</a></li>
-                            <li><a href="/AboutUs.aspx">About Us</a></li>
+                            <li><a href="<?=base_url()?>t_a_c">Disclaimer, Privacy &amp; Terms of Use</a></li>
+                            <li><a href="<?=base_url()?>f_a_qs">FAQ</a></li>
+                            <li><a href="<?=base_url()?>about_us">About Us</a></li>
                             <li><a href="<?php echo getHomeUrl()?>contact_us">Contact Us</a></li>
                         </ul>
                     </div>

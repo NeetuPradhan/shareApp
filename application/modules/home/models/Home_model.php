@@ -41,4 +41,11 @@ class Home_model extends CI_Model {
             $query = $this->db->insert_string('tbl_user_messages', $data_to_db);
             return $this->db->query($query);
 	}
+
+	public function get_footer_contents($title){
+		$query = "SELECT * FROM tbl_cms
+			WHERE title = '$title'";
+		$result = $this->db->query($query);
+		return $result->row_array();
+	}
 }

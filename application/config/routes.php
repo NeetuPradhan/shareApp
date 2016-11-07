@@ -54,3 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['backend'] = "backend/admin";
 $route['contact_us'] = "home/contact_us";
+$route['about_us'] = "home/footer_contents/about_us";
+$route['t_a_c'] = "home/footer_contents/t_a_c";
+$route['f_a_qs'] = "home/footer_contents/f_a_qs";
