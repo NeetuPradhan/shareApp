@@ -8,7 +8,7 @@ class Login extends MX_Controller {
 	  	parent::__construct();
 	  	$this->form_validation->CI =& $this;
 	  	$this->load->library('form_validation');
-	  	$this->load->model('login_model');
+	  	$this->load->model('member_login_model');
 	}
 
 	public function index() {
@@ -18,17 +18,7 @@ class Login extends MX_Controller {
 		$this->form_validation->set_rules('email', "Email",'xss_clean|valid_email|callback_validate_credentials|callback_check_user_status');
 		$this->form_validation->set_rules('password', "Password",'required|xss_clean');
 		if($this->form_validation->run()) {
-			$user_details = $this->login_model->get_user_details($this->input->post('email'));
-			
-			$name = $user_details["f_name"] . " " . $user_details["l_name"];
-			$data = array(
-				'user_email' => $this->input->post('email'),
-				'user_pw' => $this->helper_model->encrypt_me($this->input->post('password')),
-				'name' => $name,
-				'is_Login' => 1,
-				'user_id' => $user_details["id"],
-				);
-			$this->session->set_userdata($data);
+			$this->helper_model->set_user_login_session($this->input->post('email'));
 
 			if($this->input->post('remember_me') !== null) {
 
@@ -51,10 +41,10 @@ class Login extends MX_Controller {
 				delete_cookie('user_pw');
 			}
 
-				redirect(getHomeUrl());
+			redirect(getHomeUrl());
 		}
 		$data['title'] = 'Login';
-		$data['module'] = 'auth';
+		$data['module'] = 'member';
 		$data['view_file'] = 'login_form';
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
@@ -65,7 +55,7 @@ class Login extends MX_Controller {
 	}
 
 	public function validate_credentials(){
-		if($this->login_model->can_log_in()){
+		if($this->member_login_model->can_log_in()){
 			return true;
 		} else {
 			$this->form_validation->set_message('validate_credentials','Incorrect Email/Password');
@@ -74,7 +64,7 @@ class Login extends MX_Controller {
 	}
 
 	public function check_user_status(){
-		$user_details = $this->login_model->get_user_details($this->input->post('email'));
+		$user_details = $this->member_login_model->get_user_details($this->input->post('email'));
 		if($user_details['verification_status']==0){
 			$this->form_validation->set_message('check_user_status', 'Your account is not verified. Please check your email inbox and click on the verification link there to verify your account.');
 			return false;

@@ -26,8 +26,8 @@ if(!function_exists('getHomeUrl')){
 	}
 }
 
-if(!function_exists('getAuthUrl')){
-	function getAuthUrl() {
-		return base_url().'auth/';
+if(!function_exists('getCompanyUrl')){
+	function getCompanyUrl() {
+		return base_url().'company/';
 	}
 }

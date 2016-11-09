@@ -11,14 +11,6 @@
                             <li>
                                 <a href="<?php echo getHomeUrl()?>contact_us">Contact Us</a>
                             </li>
-                            <li>
-                            <?php 
-                            if($this->helper_model->validate_user_session()){?>
-                                <a href="<?php echo getAuthUrl().'login/logout'?>">Log Out</a>
-                            <?php  } else { ?>
-                                <a href="<?php echo getAuthUrl().'login';?>">Log In</a>
-                            <?php } ?>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -179,12 +171,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="">
-                            <a href="/Training.aspx">Training</a>
-                        </li>
-                        <li id="ctl00_liForum">
-                            <a target="_blank" href="/forum">Forum</a>
-                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown search-form">
@@ -204,26 +190,52 @@
                                 </li>
                             </ul>
                         </li>
+                        <?php if($this->helper_model->validate_user_session() || $this->helper_model->validate_company_session()){?>
                         <li class="dropdown" id="ctl00_liUser">                                
-                            <?php if($this->helper_model->validate_user_session()){?>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">                                    
                                 <span class="icon-user"></span>
                                 <span class="hidden-md" id="ctl00_lblUsername">Welcome, <?=$this->session->userdata('name');?></span>&nbsp;<i class="icon-angle-down"></i>                                   
-                            </a>                                
+                            </a>
+                            <?php 
+                                $url = getCompanyUrl();
+                                if($this->helper_model->validate_user_session())
+                                    $url = getMemberUrl();
+                                ?>                          
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="<?php echo getMemberUrl().'update_info'?>">Edit Account</a>
+                                    <a href="<?php echo $url.'update_info'?>">Edit Account</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo getMemberUrl().'change_password'?>">Change Password</a>
+                                    <a href="<?php echo $url.'change_password'?>">Change Password</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="<?php echo getAuthUrl().'login/logout'?>">Log Out</a></li>
+                                <li><a href="<?php echo $url.'login/logout'?>">Log Out</a></li>
                             </ul>
-                            <?php }else {?>
-                                <a href="<?php echo getAuthUrl().'login'?>">Log in</a>
-                            <?php }?>
                         </li>
+                        <?php } else {?>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Login<b class="icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="<?php echo getMemberUrl().'login'?>">Login as user</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo getCompanyUrl().'login'?>">Login as company</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Register<b class="icon-angle-down"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="<?php echo getMemberUrl().'register'?>">Register as user</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo getCompanyUrl().'register'?>">Register as company</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <?php }?>
                     </ul>
                 </div>
             </div>

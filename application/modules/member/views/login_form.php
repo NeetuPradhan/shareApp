@@ -3,7 +3,7 @@
         <div class="col-sm-6 col-md-5 col-lg-4">
             <div class="row">
                 <div class="col-xs-12">
-                <form role="form"  method="post" action="<?=getAuthUrl().'login'?>">
+                <form role="form"  method="post" action="<?=getMemberUrl().'login'?>">
                     <div class="panel panel-default">
                         <div class="panel-heading"><h3 class="panel-title"><?php echo $title;?></h3></div>
                         <div class="panel-body">

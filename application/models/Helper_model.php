@@ -100,7 +100,6 @@ class Helper_model extends CI_Model {
             $this->db->where($options);
             $this->db->select("password");
             $db_pw = $this->db->get('tbl_users')->row_array();
-            // if($this->decrypt_me($this->session->userdata('user_pw')) === $this->decrypt_me($db_pw["password"]) && $this->session->userdata('user_type') == 1){
             if($this->decrypt_me($this->session->userdata('user_pw')) === $this->decrypt_me($db_pw["password"])){
                 return true;
             } else{
@@ -120,6 +119,37 @@ class Helper_model extends CI_Model {
         if($this->db->count_all_results() > 0){
             return true;
         } else{
+            return false;
+        }
+    }
+
+    public function set_company_login_session($email){
+        $company_details = $this->db->get_where('tbl_company', array('email' => $email))->row_array();
+        $name = $company_details["name"];
+        $data = array(
+                    'company_email' => $email,
+                    'company_pw' => $company_details['password'],
+                    'name' => $name,
+                    'is_Login' => 1,
+                    'company_id' => $company_details["id"],
+                );
+        $this->session->set_userdata($data);
+    }
+
+    public function validate_company_session(){
+        if($this->session->userdata('company_email') && $this->session->userdata('company_pw')) {
+            $options = array(
+                            'email' => $this->session->userdata('company_email'),
+                            );
+            $this->db->where($options);
+            $this->db->select("password");
+            $db_pw = $this->db->get('tbl_company')->row_array();
+            if($this->decrypt_me($this->session->userdata('company_pw')) === $this->decrypt_me($db_pw["password"])){
+                return true;
+            } else{
+                return false;
+            }
+        } else {
             return false;
         }
     }
