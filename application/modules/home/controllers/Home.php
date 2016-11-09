@@ -16,6 +16,7 @@ class Home extends MX_Controller {
 		$data['title'] = 'Home';
 		$data['module'] = 'home';
 		$data['view_file'] = 'home';
+		$data["announcement"] = $this->home_model->get_announcement();
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
@@ -91,10 +92,6 @@ class Home extends MX_Controller {
 							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
 						);
 		echo Modules::run('Template/render_html', $data);
-
-		// $this->template->partial->view("cms", $data, $overwrite=FALSE);
-		// $this->template->publish('cms');
     }
-	
 
 }

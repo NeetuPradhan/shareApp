@@ -157,7 +157,7 @@
         <?php $this->load->view('home/_layouts/hydropower');?>
         <?php $this->load->view('home/_layouts/latest_news');?>
         <?php $this->load->view('home/_layouts/popular_news');?>
-        <?php $this->load->view('home/_layouts/announcement');?>
+        <?php $this->load->view('home/_layouts/announcement',$announcement);?>
         <?php $this->load->view('home/_layouts/agm_divident_right');?>
         <?php $this->load->view('home/_layouts/market_watch');?>
         <div class="col-sm-12 col-md-4">

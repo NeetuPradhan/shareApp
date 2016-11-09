@@ -48,4 +48,10 @@ class Home_model extends CI_Model {
 		$result = $this->db->query($query);
 		return $result->row_array();
 	}
+
+	public function get_announcement() {
+		$this->db->order_by('id', 'DESC');
+        $query = $this->db->get('tbl_announcement');
+        return $query->result_array();
+	}
 }

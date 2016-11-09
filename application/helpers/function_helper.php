@@ -31,3 +31,15 @@ if(!function_exists('getCompanyUrl')){
 		return base_url().'company/';
 	}
 }
+
+if (!function_exists('formatDateTime')) {
+	function formatDateTime($dateTime, $format = 'Y-m-d') {
+        if(!empty($dateTime)){
+            if ($dateTime = new DateTime($dateTime)) {
+                return $dateTime->format($format);
+            }
+        }
+        return NULL;
+    }
+
+}
