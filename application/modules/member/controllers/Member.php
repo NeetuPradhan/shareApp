@@ -58,7 +58,7 @@ class Member extends MX_Controller {
             if($this->member_model->update_password($password)) {
                 $this->session->set_userdata( 'user_flash_msg_type', "success" );
                 $this->session->set_flashdata('user_flash_msg', 'Password Changed Successfully');
-                redirect(getHomeUrl());
+                redirect(getMemberUrl().'login');
             } else {
                 $this->session->set_userdata( 'user_flash_msg_type', "danger" );
                 $this->session->set_flashdata('user_flash_msg', 'Sorry, Unable to Change the Password');

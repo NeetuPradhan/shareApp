@@ -18,9 +18,7 @@ class Register extends MX_Controller {
 	public function register() {
 		$this->form_validation->set_rules('code','Code','required|xss_clean');
 		$this->form_validation->set_rules('name','Company Name','required|xss_clean');
-		$this->form_validation->set_rules('email','email','is_unique[tbl_company.email]');
 		$this->form_validation->set_rules('email', "Email",'required|xss_clean|trim|valid_email|is_unique[tbl_company.email]');
-		$this->form_validation->set_rules('email', "Email",'required|xss_clean|trim|valid_email');
 		$this->form_validation->set_message('is_unique', 'This %s has already been registered.');
 		$this->form_validation->set_rules('password','Password','required|xss_clean|min_length[6]|max_length[50]');
 		$this->form_validation->set_rules('c_password','Confirm Password','required|xss_clean|matches[password]');

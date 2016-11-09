@@ -35,7 +35,7 @@
                     <div class="panel panel-default">    
                         <div class="panel-heading"><h3 class="panel-title">New User</h3></div>
                         <div class="panel-body">                            
-                            <a id="lbtnSignup" class="btn btn-primary" title="Create Free Account" href="<?php echo getMemberUrl();?>">Create Free Account</a>
+                            <a id="lbtnSignup" class="btn btn-primary" title="Create Free Account" href="<?php echo getMemberUrl().'register';?>">Create Free Account</a>
                         </div>
                         <div class="panel-footer">
                             After registration an email verification link will be sent to your email address. In order to receive email alerts and reset password, you must verfiy

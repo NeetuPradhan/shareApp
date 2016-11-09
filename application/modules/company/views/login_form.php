@@ -20,7 +20,7 @@
                             <div class="form-group">
                             <label class="checkbox1"><input type="checkbox" name="remember_me" checked=""><i> </i>Remember Me</label></br>
                                 <input type="submit" class="btn btn-primary" value="Log in">
-                                <a title="Forgot password" href="<?php echo getMemberUrl().'forgot_pass'?>">forgot password?</a>
+                                <a title="Forgot password" href="<?php echo getCompanyUrl().'forgot_pass'?>">forgot password?</a>
                             </div>
                             <div id="verification_link">
                                 <!-- <a id="btnVerifyEmail" title="Resend email verification link" class="btn btn-default">Resend Email Verification Link</a> -->
@@ -35,7 +35,7 @@
                     <div class="panel panel-default">    
                         <div class="panel-heading"><h3 class="panel-title">New User</h3></div>
                         <div class="panel-body">                            
-                            <a id="lbtnSignup" class="btn btn-primary" title="Create Free Account" href="<?php echo getMemberUrl();?>">Create Free Account</a>
+                            <a id="lbtnSignup" class="btn btn-primary" title="Create Free Account" href="<?php echo getCompanyUrl().'register';?>">Create Free Account</a>
                         </div>
                         <div class="panel-footer">
                             After registration an email verification link will be sent to your email address. In order to receive email alerts and reset password, you must verfiy

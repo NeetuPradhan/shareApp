@@ -12,24 +12,23 @@ class Company_model extends CI_Model {
         return $query->row_array();
     }
 
-    function get_user_detail($id) {
+    function get_company_detail($id) {
         return $this->db->get_where('tbl_company', array('id' => $id))->row_array();
     }
 
 
-    function update_user($user_id) {
+    function update_company($company_id) {
         $data = array(
-                    'f_name' => $this->input->post('f_name'),
-                    'l_name' => $this->input->post('l_name'),
+                    'name' => $this->input->post('name'),
+                    'code' => $this->input->post('code'),
                     'email' => $this->input->post('email'),
-                    'gender' => $this->input->post('gender'),
-                    'address' => $this->input->post('address'),
-                    'city' => $this->input->post('city'),
-                    'mobile' => $this->input->post('mobile'),
                     'phone' => $this->input->post('phone'),
+                    'fax' => $this->input->post('fax'),
+                    'address' => $this->input->post('address'),
+                    'company_type' => $this->input->post('company_type'),
             );
 
-        $this->db->where('id', $user_id);
+        $this->db->where('id', $company_id);
         if($this->db->update('tbl_company', $data)){
             return true;
         } else {
@@ -42,7 +41,7 @@ class Company_model extends CI_Model {
             'password' => $password
             );
 
-        $this->db->where('email', $this->session->userdata('user_email'));
+        $this->db->where('email', $this->session->userdata('company_email'));
 
         if($this->db->update('tbl_company', $data)){
             return true;
@@ -52,8 +51,8 @@ class Company_model extends CI_Model {
     }
 
     public function verify_current_pw() {
-        $this->db->where('email', $this->session->userdata('user_email'));
-        $query = $this->db->get_where('tbl_company', array('email = ' => $this->session->userdata('user_email')));
+        $this->db->where('email', $this->session->userdata('company_email'));
+        $query = $this->db->get_where('tbl_company', array('email = ' => $this->session->userdata('company_email')));
 
         if($query->num_rows() == 1){
             $row = $query->row_array(); 
@@ -70,7 +69,7 @@ class Company_model extends CI_Model {
 
     public function pass_reset_email(){
         $mail_setting = $this->settings_model->get_email_settings();
-        $user_details = $this->get_user_detail_by_email($this->input->post('email'));
+        $company_details = $this->get_company_detail_by_email($this->input->post('email'));
         $message = $this->settings_model->get_email_template('FORGOT_PWD');
         $subject = $message['subject'];
         $emailbody = $message['content'];
@@ -80,7 +79,7 @@ class Company_model extends CI_Model {
             
         $confirm = "<a target='_blank' href='".getCompanyUrl()."validate_pw_reset_credentials/$key/$email'>here</a>";        
         $parseElement = array(
-            "USERNAME" => $user_details['f_name']." ".$user_details['l_name'],
+            "USERNAME" => $company_details['name'],
             "SITENAME" => 'JobPortal',
             "LINK" => $confirm,
             "SITELINK" => base_url()
@@ -144,7 +143,7 @@ class Company_model extends CI_Model {
         }
     }
 
-    public function get_user_detail_by_email($email) {
+    public function get_company_detail_by_email($email) {
         return $this->db->get_where('tbl_company', array('email' => $email))->row_array();
     }
 
