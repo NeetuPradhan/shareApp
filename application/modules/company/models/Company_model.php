@@ -1,5 +1,5 @@
 <?php
-class Member_model extends CI_Model {
+class Company_model extends CI_Model {
     function __construct() {
         parent::__construct();
         $this->load->model('backend/settings_model');
@@ -7,14 +7,15 @@ class Member_model extends CI_Model {
     }
 
     function check_email_forget($str) {
-        $sql = "SELECT * FROM tbl_users WHERE email='$str' ";
+        $sql = "SELECT * FROM tbl_company WHERE email='$str' ";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
 
     function get_user_detail($id) {
-        return $this->db->get_where('tbl_users', array('id' => $id))->row_array();
+        return $this->db->get_where('tbl_company', array('id' => $id))->row_array();
     }
+
 
     function update_user($user_id) {
         $data = array(
@@ -29,7 +30,7 @@ class Member_model extends CI_Model {
             );
 
         $this->db->where('id', $user_id);
-        if($this->db->update('tbl_users', $data)){
+        if($this->db->update('tbl_company', $data)){
             return true;
         } else {
             return false;
@@ -43,7 +44,7 @@ class Member_model extends CI_Model {
 
         $this->db->where('email', $this->session->userdata('user_email'));
 
-        if($this->db->update('tbl_users', $data)){
+        if($this->db->update('tbl_company', $data)){
             return true;
         } else {
             return false;
@@ -52,7 +53,7 @@ class Member_model extends CI_Model {
 
     public function verify_current_pw() {
         $this->db->where('email', $this->session->userdata('user_email'));
-        $query = $this->db->get_where('tbl_users', array('email = ' => $this->session->userdata('user_email')));
+        $query = $this->db->get_where('tbl_company', array('email = ' => $this->session->userdata('user_email')));
 
         if($query->num_rows() == 1){
             $row = $query->row_array(); 
@@ -77,7 +78,7 @@ class Member_model extends CI_Model {
         $key = genRandomString('32');
         $email = sha1(md5($this->input->post('email')));
             
-        $confirm = "<a target='_blank' href='".getMemberUrl()."validate_pw_reset_credentials/$key/$email'>here</a>";        
+        $confirm = "<a target='_blank' href='".getCompanyUrl()."validate_pw_reset_credentials/$key/$email'>here</a>";        
         $parseElement = array(
             "USERNAME" => $user_details['f_name']." ".$user_details['l_name'],
             "SITENAME" => 'JobPortal',
@@ -97,7 +98,7 @@ class Member_model extends CI_Model {
 
     public function check_email($email){
         $this->db->where(array('email' => $email));
-        $query = $this->db->get('tbl_users');
+        $query = $this->db->get('tbl_company');
 
         if ($query->num_rows() > 0) {
             return TRUE;
@@ -109,7 +110,7 @@ class Member_model extends CI_Model {
     public function update_activation_reset_key($key){
         $data = array('activation_reset_key' => $key );
         $this->db->where("email", $this->input->post("email"));
-        $this->db->update("tbl_users", $data);
+        $this->db->update("tbl_company", $data);
     }
 
 
@@ -120,7 +121,7 @@ class Member_model extends CI_Model {
                 );
         $this->db->where($options);
         $this->db->select('email');
-        $query = $this->db->get_where('tbl_users', $options);
+        $query = $this->db->get_where('tbl_company', $options);
         if($query->num_rows()==1) {
             $data = $query->row_array();
             return $data['email'];
@@ -135,7 +136,7 @@ class Member_model extends CI_Model {
                     'password' => $this->helper_model->encrypt_me($this->input->post('password')),
                     'activation_reset_key' => genRandomString('42') 
                 );
-        $this->db->update('tbl_users', $data);
+        $this->db->update('tbl_company', $data);
         if($this->db->affected_rows()){
             return true;
         } else {
@@ -144,14 +145,13 @@ class Member_model extends CI_Model {
     }
 
     public function get_user_detail_by_email($email) {
-        return $this->db->get_where('tbl_users', array('email' => $email))->row_array();
+        return $this->db->get_where('tbl_company', array('email' => $email))->row_array();
     }
 
     function update_verification_status($email) {
         $this->db->set('verification_status', '1');
         $this->db->where('email', $email);
-        $this->db->update('tbl_users');
+        $this->db->update('tbl_company');
     }
-
 }
 ?>
