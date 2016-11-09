@@ -149,4 +149,112 @@ class Company extends MX_Controller {
 		}
 	}
 
+	/* announcement start */
+
+	public function announcement() {
+		$query = $this->db->get('tbl_announcement');
+		$config['total_rows'] = $query->num_rows();
+        $config['per_page'] = '300';
+        $offset = $this->uri->segment(4, 0);
+        $config['uri_segment'] = '4';
+        $this->pagination->initialize($config);
+
+        $data['announcement'] = $this->company_model->announcement_list($config['per_page'], $offset);
+        $data['links'] = $this->pagination->create_links();
+		$data['title'] = 'Announcement List';
+		$data['module'] = 'company';
+		$data['view_file'] = 'announcement/list';
+		$data['scripts'] = array(
+							base_url().'assets/admin/template/plugins/datatables/jquery.dataTables.min.js',
+							base_url().'assets/admin/template/plugins/datatables/dataTables.bootstrap.min.js',
+							base_url().'assets/common/js/alertify.js',
+						);
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+							base_url().'assets/admin/template/plugins/datatables/dataTables.bootstrap.css',
+							base_url().'assets/common/css/alertifyjs/css/alertify.css',
+							base_url().'assets/common/css/alertifyjs/css/themes/default.css',
+						);
+		echo Modules::run('Template/render_html', $data);
+	}
+
+	public function announcement_add() {
+		$this->form_validation->set_rules('title', 'Title', 'required|xss_clean');
+		$this->form_validation->set_rules('detail', 'Detail', 'required|xss_clean');
+
+		if($this->form_validation->run()) {
+			if($this->company_model->insert_announcement()){
+	            $this->session->set_userdata( 'user_flash_msg_type', "success" );
+	            $this->session->set_flashdata('user_flash_msg', 'Announcemnet added Successfully');
+	            redirect(getCompanyUrl().'announcement');
+			} else {
+				$this->session->set_userdata( 'user_flash_msg_type', "danger" );
+	            $this->session->set_flashdata('user_flash_msg', 'Sorry, Unable to add.');
+			}
+		}
+		$data['title'] = 'Add Announcement';
+		$data['module'] = 'company';
+		$data['view_file'] = 'announcement/add';
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
+	}
+
+	public function announcement_edit($id) {
+		$this->form_validation->set_rules('title', 'Title', 'required|xss_clean');
+		$this->form_validation->set_rules('detail', 'Detail', 'required|xss_clean');
+
+		if($this->form_validation->run()){
+			$this->company_model->update_announcement($id);
+            $this->session->set_userdata( 'user_flash_msg_type', "success" );
+            $this->session->set_flashdata('user_flash_msg', 'Announcement Updated Successfully');
+            redirect(getCompanyUrl().'announcement');
+		}
+
+		$data['info'] = $this->company_model->get_announcement($id);
+		$data['title'] = 'Edit Announcement';
+		$data['module'] = 'company';
+		$data['view_file'] = 'announcement/edit';
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
+	}
+
+	public function announcement_delete($id) {
+        if($this->company_model->delete_announcement($id)) {
+            echo json_encode(array(
+                    'status' => TRUE,
+                    'message' => 'Announcement deleted successfully'
+            ));
+        } else {
+            echo json_encode(array(
+                    'status' => FALSE,
+                    'message' => 'Delete Failed'
+            ));
+        }
+    }
+
+    public function change_status($id) {
+        if($this->company_model->change_status($id)) {
+            echo json_encode(array(
+                    'status' => TRUE,
+                    'message' => 'Status changed successfully'
+            ));
+        } else {
+            echo json_encode(array(
+                    'status' => FALSE,
+                    'message' => 'Status change Failed'
+            ));
+        }
+    }
+
+	/* announcement end */
+
 }

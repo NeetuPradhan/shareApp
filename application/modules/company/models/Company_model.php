@@ -152,5 +152,74 @@ class Company_model extends CI_Model {
         $this->db->where('email', $email);
         $this->db->update('tbl_company');
     }
+
+    function insert_announcement() {
+        $data = array(
+                'title' => $this->input->post('title'),
+                'detail' => $this->input->post('detail'),
+                'company_id' => $this->session->userdata('company_id'),
+                'added_date' => get_local_time('time'),
+        );
+
+        if($this->db->insert('tbl_announcement', $data)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function announcement_list() {
+        $this->db->order_by('id', 'DESC');
+        $query = $this->db->get('tbl_announcement');
+        return $query->result_array();
+    }
+
+    function get_announcement($announcement_id) {
+        $options = array('id' => $announcement_id);
+        $query = $this->db->get_where('tbl_announcement', $options, 1);
+        return $query->row_array();
+    }
+
+    function update_announcement($announcement_id) {
+        $data = array(
+                'title' => $this->input->post('title'),
+                'detail' => $this->input->post('detail'),
+            );
+
+        $this->db->where('id', $announcement_id);
+        if($this->db->update('tbl_announcement', $data)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function delete_announcement($announcement_id) {
+        $this->db->where('id', $announcement_id);
+        if($this->db->delete('tbl_announcement')){
+            return true;
+        }
+        return false;
+    }
+
+    function change_status($id) {
+        $options = array('id' => $id);
+        $query = $this->db->get_where('tbl_announcement', $options, 1);
+        $det=$query->row_array();
+
+        if ($det['status'] === '1') {
+            $status = '0';
+        } elseif ($det['status'] === '0') {
+            $status = '1';
+        }
+
+        $data = array('status' => $status);
+        $this->db->where('id', $id);
+        if($this->db->update('tbl_announcement', $data)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 ?>

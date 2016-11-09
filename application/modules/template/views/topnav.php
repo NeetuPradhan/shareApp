@@ -198,7 +198,8 @@
                             </a>
                             <?php 
                                 $url = getCompanyUrl();
-                                if($this->helper_model->validate_user_session())
+                                $is_user = $this->helper_model->validate_user_session();
+                                if($is_user)
                                     $url = getMemberUrl();
                                 ?>                          
                             <ul class="dropdown-menu">
@@ -208,6 +209,11 @@
                                 <li>
                                     <a href="<?php echo $url.'change_password'?>">Change Password</a>
                                 </li>
+                                <?php if(!$is_user){ ?>
+                                <li>
+                                    <a href="<?php echo $url.'announcement'?>">Announcement</a>
+                                </li>
+                                <?php }?>
                                 <li class="divider"></li>
                                 <li><a href="<?php echo $url.'login/logout'?>">Log Out</a></li>
                             </ul>
