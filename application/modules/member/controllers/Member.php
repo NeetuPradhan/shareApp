@@ -120,32 +120,31 @@ class Member extends MX_Controller {
 	public function validate_pw_reset_credentials($key='', $hash_email='') {
 		$this->form_validation->set_rules('new_password','New Password','required|xss_clean|min_length[6]|max_length[50]');
 		$this->form_validation->set_rules('c_password','Confirm Password','required|xss_clean|matches[new_password]');
+		$email = $this->member_model->is_key_valid($key, $hash_email);
 		if($this->form_validation->run()) {
-			$this->session->unset_userdata('user_key');
-			$this->member_model->reset_password($this->session->userdata('user_email'));
-			$this->helper_model->set_user_login_session($this->session->userdata('user_email'));
-			$this->session->set_userdata( 'user_flash_msg_type', "success" );
-	        $this->session->set_flashdata('user_flash_msg', "Your Password has been successfully reset.");
+			// $this->session->unset_userdata('user_key');
+			if($email){
+				$this->member_model->update_verification_status($email);
+				$this->session->set_userdata('user_email', $email);
+				$this->member_model->reset_password($this->session->userdata('user_email'));
+				$this->helper_model->set_user_login_session($this->session->userdata('user_email'));
+				$this->session->set_userdata( 'user_flash_msg_type', "success" );
+		        $this->session->set_flashdata('user_flash_msg', "Your Password has been successfully reset.");
+			}
 			redirect(getHomeUrl());
 		}
-		$email = $this->member_model->is_key_valid($key, $hash_email);
-		if($email){
-			$this->member_model->update_verification_status($email);
-			$this->session->set_userdata('user_email', $email);
-
-			$data["email"] = $email;
-			$data["key"] = $key;
-			$data["hash_email"] = $hash_email;
-			$data['title'] = 'Reset Password';
-			$data['module'] = 'member';
-			$data['view_file'] = 'reset_password';
-			$data['scripts'] = array();
-			$data['stylesheets'] = array(
-				base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
-				base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
-				);
-			echo Modules::run('Template/render_html', $data);
-		}
+		$data["email"] = $email;
+		$data["key"] = $key;
+		$data["hash_email"] = $hash_email;
+		$data['title'] = 'Reset Password';
+		$data['module'] = 'member';
+		$data['view_file'] = 'reset_password';
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+			base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+			base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+			);
+		echo Modules::run('Template/render_html', $data);
 	}
 
 }

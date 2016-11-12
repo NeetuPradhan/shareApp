@@ -132,7 +132,7 @@ class Member_model extends CI_Model {
     public function reset_password($email) {
         $this->db->where('email',$email);
         $data = array(
-                    'password' => $this->helper_model->encrypt_me($this->input->post('password')),
+                    'password' => $this->helper_model->encrypt_me($this->input->post('new_password')),
                     'activation_reset_key' => genRandomString('42') 
                 );
         $this->db->update('tbl_users', $data);
