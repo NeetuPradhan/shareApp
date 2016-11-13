@@ -182,6 +182,7 @@ class Company extends MX_Controller {
 	public function announcement_add() {
 		$this->form_validation->set_rules('title', 'Title', 'required|xss_clean');
 		$this->form_validation->set_rules('detail', 'Detail', 'required|xss_clean');
+		editor();
 
 		if($this->form_validation->run()) {
 			if($this->company_model->insert_announcement()){
@@ -207,6 +208,7 @@ class Company extends MX_Controller {
 	public function announcement_edit($id) {
 		$this->form_validation->set_rules('title', 'Title', 'required|xss_clean');
 		$this->form_validation->set_rules('detail', 'Detail', 'required|xss_clean');
+		editor();
 
 		if($this->form_validation->run()){
 			$this->company_model->update_announcement($id);

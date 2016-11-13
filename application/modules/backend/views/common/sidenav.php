@@ -123,6 +123,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <i class="glyphicon glyphicon-user"></i> <span>User Management</span>
                 </a>
             </li>
+            <li>
+                <a href="<?=base_url().'backend/company';?>">
+                    <i class="glyphicon glyphicon-user"></i> <span>Company Management</span>
+                </a>
+            </li>
         </ul>
     </section>
 </aside>

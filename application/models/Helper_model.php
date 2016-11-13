@@ -153,6 +153,18 @@ class Helper_model extends CI_Model {
             return false;
         }
     }
+
+    /* function to get company type by id*/
+
+    function get_company_type_by_id($company_type_id) {
+        if($company_type_id) {
+            $options = array('id' => $company_type_id);
+            $query = $this->db->get_where('tbl_company_type', $options, 1);
+            $data= $query->row_array();
+            return $data['type'];
+        }
+    }
+    
 }
 
 ?>

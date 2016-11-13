@@ -9,6 +9,7 @@ class Home extends MX_Controller {
 	  	$this->form_validation->CI =& $this;
 	  	$this->load->library('form_validation');
 	  	$this->load->model('home_model');
+	  	$this->load->model('announcement/announcement_model');
 	  	
 	}
 
@@ -16,13 +17,13 @@ class Home extends MX_Controller {
 		$data['title'] = 'Home';
 		$data['module'] = 'home';
 		$data['view_file'] = 'home';
-		$data["announcement"] = $this->home_model->get_announcement();
+		$data["announcement"] = $this->announcement_model->get_announcement(HOME_PAGE_LIMIT);
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
 							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
 						);
-		echo Modules::run('Template/render_html', $data);
+		echo Modules::run('template/render_html', $data);
 	}
 
 	public function contact_us(){
@@ -92,6 +93,41 @@ class Home extends MX_Controller {
 							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
 						);
 		echo Modules::run('Template/render_html', $data);
+    }
+
+    public function announcement_more() {
+    	$data['title'] = 'Home';
+		$data['module'] = 'home';
+		$data['view_file'] = '_layouts/announcement/list_more';
+		$data["announcement"] = $this->home_model->get_announcement(HOME_PAGE_LIMIT);
+		$data["announcement_total"] = $this->home_model->totalRecordAnnouncement();
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
+    }
+  
+    public function more_list() {
+    	$announcement_id = $_POST['json_announcement_id'];
+    	$getMoreCount = $_POST['more_count'];
+    	$data['announcement_list'] = $this->home_model->get_remaining_announcement($announcement_id);
+    	$more_count = HOME_PAGE_LIMIT +$getMoreCount;
+    	$moreState['moreMsg'] = '';
+		$getLimitMore = $this->home_model->get_announcement($more_count,HOME_PAGE_LIMIT);
+		if(empty($getLimitMore)) {
+			$moreState['moreMsg'] = 'yes';
+		} else {
+			$moreState['moreMsg'] = 'no';
+		}
+		$moreState['more_btn'] = $more_count;
+		// $data['module'] = 'home';
+		// $data['view_file'] = '_layouts/announcement/list_more';
+		
+		// $dataHtml	=  $this->load->view('home/_layouts/announcement_more',$data);
+		echo json_encode(array('success'=>true,'dataHtml'=>$dataHtml));
+		
     }
 
 }

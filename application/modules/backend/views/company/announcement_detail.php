@@ -10,35 +10,35 @@
         <table id="example" class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
+                    <th>Title</th>
+                    <th>Detail</th>
+                    <th>Fiscal Year</th>
                     <th>Status</th>
                     <th>Options</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    if(count($user_list)>0){
-                        foreach($user_list as $user){
+                    if(count($company_announcement)>0){
+                        foreach($company_announcement as $data){
                 ?>
                 <tr>
-                    <td><?=$user['f_name']." ".$user['l_name']?></td>
-                    <td><?=$user['email']?></td>
-                    <td><?=$user['address']?></td>
+                    <td><?=$data['title'];?></td>
+                    <td><?=$data['detail']?></td>
+                    <td><?=$data['fiscal_year']?></td>
                     <td>
                         <?php 
-                            if($user['verification_status']==0){
-                                echo 'Not Verified';
-                            } else if ($user['verification_status']==1){
-                                echo 'Verified';
-                            } else if ($user['verification_status']==2){
-                                echo 'Admin Verified';
+                            if($data['status']==0){
+                                echo 'Inactive';
+                            } else if ($data['status']==1){
+                                echo 'Active';
+                            } else if ($data['status']==2){
+                                echo 'CLosed';
                             } 
                         ?>
                     </td>
                     <td>
-                        <a href="<?=site_url(ADMIN_PATH.'/user/edit/'.$user['id']) ?>" data-toggle="tooltip" title="Edit" class="btn btn-effect-ripple btn-xs btn-success"  data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a href="<?=site_url(ADMIN_PATH.'/company/announcement_edit/'.$data['id']) ?>" data-toggle="tooltip" title="Edit" class="btn btn-effect-ripple btn-xs btn-success"  data-original-title="Edit"><i class="fa fa-pencil"></i></a>
                     </td>
                 </tr>
                 <?php
@@ -58,9 +58,9 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Address</th>
+                    <th>Title</th>
+                    <th>Detail</th>
+                    <th>Fiscal Year</th>
                     <th>Status</th>
                     <th>Options</th>
                 </tr>
@@ -72,7 +72,6 @@
 <!-- DataTables -->
 <script src="<?=base_url().'assets/admin/template/'?>plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?=base_url().'assets/admin/template/'?>plugins/datatables/dataTables.bootstrap.min.js"></script>
-
 
 <script>
     $(function () {

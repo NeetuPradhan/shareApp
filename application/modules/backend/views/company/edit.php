@@ -10,19 +10,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="box-body">
         <?php $this->load->view('backend/common/alert')?>
 
-        <form role="form" method="post" action="<?=base_url().'backend/user/edit'.'/'.$info['id']?>">
+        <form role="form" method="post" action="<?=base_url().'backend/company/edit'.'/'.$info['id']?>">
             <p style="color:grey">Fields marked with <i class="fa fa-asterisk"></i> are required.</p>
             <div class="col-lg-6">
-                <div class="form-group <?php if(form_error('f_name')) echo 'has-error' ?>">
-                    <label>First Name</label>
-                    <input name="f_name" readonly="true" placeholder="First Name" class="form-control" value="<?=set_value('f_name',$info['f_name']);?>">
-                    <?=form_error('f_name')?>
+                <div class="form-group <?php if(form_error('code')) echo 'has-error' ?>">
+                    <label>Code</label>
+                    <input name="code" readonly="true" placeholder="Code" class="form-control" value="<?=set_value('code',$info['code']);?>">
+                    <?=form_error('code')?>
                 </div>
 
-                <div class="form-group <?php if(form_error('l_name')) echo 'has-error' ?>">
-                    <label>Last Name</label>
-                    <input name="l_name" readonly="true" placeholder="Last Name" class="form-control" value="<?=set_value('l_name',$info['l_name']);?>">
-                    <?=form_error('l_name')?>
+                <div class="form-group <?php if(form_error('name')) echo 'has-error' ?>">
+                    <label>Company Name</label>
+                    <input name="name" readonly="true" placeholder="Company Name" class="form-control" value="<?=set_value('name',$info['name']);?>">
+                    <?=form_error('name')?>
                 </div>
 
                 <div class="form-group <?php if(form_error('email')) echo 'has-error' ?>">
@@ -31,17 +31,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <?=form_error('email')?>
                 </div>
 
-                <div class="form-group <?php if(form_error('address')) echo 'has-error' ?>">
-                    <label>Address<i class="fa fa-asterisk"></i></label>
-                    <input name="address" readonly="true" placeholder="Address" class="form-control" value="<?=set_value('address',$info['address']);?>">
-                    <?=form_error('address')?>
-                </div>
-
                 <div class="form-group <?php if(form_error('phone')) echo 'has-error' ?>">
                     <label>Phone<i class="fa fa-asterisk"></i></label>
                     <input name="phone" readonly="true" placeholder="Phone" class="form-control" value="<?=set_value('phone',$info['phone']);?>">
                     <?=form_error('phone')?>
                 </div>
+
+                <div class="form-group <?php if(form_error('fax')) echo 'has-error' ?>">
+                    <label>Fax<i class="fa fa-asterisk"></i></label>
+                    <input name="fax" readonly="true" placeholder="Fax" class="form-control" value="<?=set_value('fax',$info['fax']);?>">
+                    <?=form_error('fax')?>
+                </div>
+
+                <div class="form-group <?php if(form_error('address')) echo 'has-error' ?>">
+                    <label>Address<i class="fa fa-asterisk"></i></label>
+                    <input name="address" readonly="true" placeholder="Address" class="form-control" value="<?=set_value('address',$info['address']);?>">
+                    <?=form_error('address')?>
+                </div>
+                <div class="form-group <?php if(form_error('company_type')) echo 'has-error' ?>">
+                    <label>Company Type<i class="fa fa-asterisk"></i></label>
+                    <input name="company_type" readonly="true" placeholder="Company Type" class="form-control" value="<?php echo $this->helper_model->get_company_type_by_id($info['company_type']);?>">
+                    <?=form_error('company_type')?>
+                </div>
+
+                
                 <div class="form-group">
                     <label>Verification Status&nbsp;&nbsp;</label>
                     <label class="radio-inline">

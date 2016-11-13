@@ -10,35 +10,43 @@
         <table id="example" class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Full Name</th>
+                    <th>Code</th>
+                    <th>Name</th>
                     <th>Email</th>
+                    <th>Phone</th>
+                    <th>Fax</th>
                     <th>Address</th>
+                    <th>Company Type</th>
                     <th>Status</th>
                     <th>Options</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    if(count($user_list)>0){
-                        foreach($user_list as $user){
+                    if(count($company_list)>0){
+                        foreach($company_list as $company_list){
                 ?>
                 <tr>
-                    <td><?=$user['f_name']." ".$user['l_name']?></td>
-                    <td><?=$user['email']?></td>
-                    <td><?=$user['address']?></td>
+                    <td><?=$company_list['code'];?></td>
+                    <td><a href="<?php echo base_url().'backend/company/show_announcement/'.$company_list['id'];?>"><?=$company_list['name']?></a></td>
+                    <td><?=$company_list['email']?></td>
+                    <td><?=$company_list['phone']?></td>
+                    <td><?=$company_list['fax']?></td>
+                    <td><?=$company_list['address']?></td>
+                    <td><?php echo $this->helper_model->get_company_type_by_id($company_list['company_type']);?></td>
                     <td>
                         <?php 
-                            if($user['verification_status']==0){
+                            if($company_list['verification_status']==0){
                                 echo 'Not Verified';
-                            } else if ($user['verification_status']==1){
+                            } else if ($company_list['verification_status']==1){
                                 echo 'Verified';
-                            } else if ($user['verification_status']==2){
+                            } else if ($company_list['verification_status']==2){
                                 echo 'Admin Verified';
                             } 
                         ?>
                     </td>
                     <td>
-                        <a href="<?=site_url(ADMIN_PATH.'/user/edit/'.$user['id']) ?>" data-toggle="tooltip" title="Edit" class="btn btn-effect-ripple btn-xs btn-success"  data-original-title="Edit"><i class="fa fa-pencil"></i></a>
+                        <a href="<?=site_url(ADMIN_PATH.'/company/edit/'.$company_list['id']) ?>" data-toggle="tooltip" title="Edit" class="btn btn-effect-ripple btn-xs btn-success"  data-original-title="Edit"><i class="fa fa-pencil"></i></a>
                     </td>
                 </tr>
                 <?php
@@ -58,9 +66,13 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>Full Name</th>
+                    <th>Code</th>
+                    <th>Name</th>
                     <th>Email</th>
+                    <th>Phone</th>
+                    <th>Fax</th>
                     <th>Address</th>
+                    <th>Company Type</th>
                     <th>Status</th>
                     <th>Options</th>
                 </tr>
@@ -72,7 +84,6 @@
 <!-- DataTables -->
 <script src="<?=base_url().'assets/admin/template/'?>plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?=base_url().'assets/admin/template/'?>plugins/datatables/dataTables.bootstrap.min.js"></script>
-
 
 <script>
     $(function () {

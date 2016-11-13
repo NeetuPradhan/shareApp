@@ -61,6 +61,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="sub"><h2>User Management</h2></div>
                     <div class="stat"><a href="<?=base_url().'backend/user';?>"><img src="<?=base_url()?>images/board_member.png"></a> </div>
                 </div>    
+                <div class="butpro butstyle">
+                    <div class="sub"><h2>Company Management</h2></div>
+                    <div class="stat"><a href="<?=base_url().'backend/company';?>"><img src="<?=base_url()?>images/add.png"></a> </div>
+                </div>
             </div>
         </div>
     </div>
