@@ -22,7 +22,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    <!-- Tell the browser to be responsive to screen width -->
 	    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	    <link rel="sortcut icon" type="image/x-icon" href="<?=base_url().LOGO_DIR.$this->config->item('logo')?>">
-	    <?php echo Modules::run('Template/load_css'); ?>
+	    <?php echo Modules::run('template/load_css'); ?>
+
+	    <script type="text/javascript">
+            var baseUrl = "<?php echo base_url();?>";
+        </script>
+
     </head>
     <body>
     	<?php echo Modules::run('template/topnav'); ?>

@@ -41,5 +41,10 @@ if (!function_exists('formatDateTime')) {
         }
         return NULL;
     }
+}
 
+if(!function_exists('getAnnouncementUrl')){
+	function getAnnouncementUrl() {
+		return base_url().'announcement/';
+	}
 }

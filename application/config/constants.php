@@ -105,3 +105,5 @@ define('UPLOAD_DIR','uploads/admin/');
 define('BANNER_DIR',UPLOAD_DIR.'banner/');
 define('TEMP_DIR',UPLOAD_DIR.'temp/');
 define('LOGO_DIR',UPLOAD_DIR.'logo/');
+
+define('HOME_PAGE_LIMIT',3);

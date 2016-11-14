@@ -25,15 +25,18 @@ class Announcement_model extends CI_Model {
 	public function get_remaining_announcement($announcement_id) {
 		$this->db->where('id<',$announcement_id);
 		$this->db->where('status',1);
+		$this->db->order_by('id', 'DESC');
 		$this->db->limit(HOME_PAGE_LIMIT);
         $query = $this->db->get('tbl_announcement');
         return $query->result_array();
 	}
 
-	// public function getLimitMore($offset,$limit) {
-	// 	$sql = "select * from posts where status =  1 And del_flg=0 ORDER BY post_id DESC limit $offset,$limit";
-	// 	$cmd = Yii::app()->db->createCommand($sql);
-	// 	$cmd->execute();
-	// 	return $cmd->queryAll();
-	// }
+	public function get_limit_more($offset,$limit) {
+		$this->db->where('status',1);
+		$this->db->order_by('id', 'DESC');
+		$this->db->limit($offset,$limit);
+        $query = $this->db->get('tbl_announcement');
+        return $query->result_array();
+	}
+
 }
