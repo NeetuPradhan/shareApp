@@ -48,3 +48,9 @@ if(!function_exists('getAnnouncementUrl')){
 		return base_url().'announcement/';
 	}
 }
+
+if(!function_exists('getNewsUrl')){
+	function getNewsUrl() {
+		return base_url().'news/';
+	}
+}

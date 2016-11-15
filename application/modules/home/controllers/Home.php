@@ -10,6 +10,7 @@ class Home extends MX_Controller {
 	  	$this->load->library('form_validation');
 	  	$this->load->model('home_model');
 	  	$this->load->model('announcement/announcement_model');
+	  	$this->load->model('news/news_model');
 	  	
 	}
 
@@ -18,6 +19,7 @@ class Home extends MX_Controller {
 		$data['module'] = 'home';
 		$data['view_file'] = 'home';
 		$data["announcement"] = $this->announcement_model->get_announcement(HOME_PAGE_LIMIT);
+		$data["news"] = $this->news_model->get_news(HOME_PAGE_LIMIT);
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 

@@ -100,10 +100,10 @@
                             </ul>
                         </li>
                         <li class="">
-                            <a href="/NewsList.aspx">News</a>
+                            <a href="<?php echo getNewsUrl();?>">News</a>
                         </li>
                         <li class="">
-                            <a href="/AnnouncementList.aspx">Announcements</a>
+                            <a href="<?php echo getAnnouncementUrl();?>">Announcements</a>
                         </li>
                         <li class="dropdown">
                             <a title="Market" data-toggle="dropdown" class="dropdown-toggle" href="#">Reports <b class="icon-angle-down"></b></a>

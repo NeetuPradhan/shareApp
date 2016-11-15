@@ -1,4 +1,4 @@
- <div class="row">
+<div class="row">
     <div class="col-lg-12">
         <h4 class="page-header">
             <span>Company News</span>
@@ -6,33 +6,65 @@
         </h4>
     </div>
 </div>
-<div id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl01_NewsBlock1_divNewsBlock">
-    <div class="row" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl01_NewsBlock1_ctl00_divBlock2">
-        <div class="col-lg-12">
+<div>
+    <div class="row">
+        <!-- <div class="col-sm-6">
+            <div class="media-news media-news-md clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl00_NewsBlock1_ctl00_LatestNews1_divNews">
+                <div class="media-wrap">
+                    <a href="/NewsDetail.aspx?newsID=28739">
+                        <img class="lazy" data-original="Uploads/Repository\636108318228437500.gif" alt="बिहीबार राष्ट्र बैंकबाट बोनस बितरणको स्वीकृति पाउने वित्तीय संस्था कुन् कुन् हुन् ?" src="Uploads/Repository\636108318228437500.gif" style="display: inline;">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-title">
+                        <a href="/NewsDetail.aspx?newsID=28739">बिहीबार राष्ट्र बैंकबाट बोनस बितरणको स्वीकृति पाउने वित्तीय संस्था कुन् कुन् हुन् ?</a>
+                    </h4>
+                    <span class="media-label">Nov 03, 2016</span>
+                    <div class="media-content">
+                        <p>नेपाल राष्टर बैंकले बिहीबार एक साथ २ बैंक तथा वित्तीय संस्थाको बोनस स्वीकृत गरेको छ । राष्ट्र बैंकले बिराटलक्ष्मी विकास बैंक (<a css="" id="" data-company-display="news" data-href="/CompanyDetail.aspx?symbol=BLDBL" data-symbol="BLDBL" data-placement="bottom" data-trigger="manual" data-type="company" data-html="true" data-content="Loading ... &lt;button class=&quot;btn btn-danger btn-xs btn-block&quot; title=&quot;Close&quot; type=&quot;button&quot; onclick=&quot;Popover.dismissPopover(this);&quot;&gt;Close&lt;/button&gt;" data-toggle="popover" title="" tab-index="0" target="_blank" href="javascript:void(0);" data-original-title="Company Detail">BLDBL</a>) र विजय लघुवित्त (<a css="" id="" data-company-display="news" data-href="/CompanyDetail.aspx?symbol=VLBS" data-symbol="VLBS" data-placement="bottom" data-trigger="manual" data-type="company" data-html="true" data-content="Loading ... &lt;button class=&quot;btn btn-danger btn-xs btn-block&quot; title=&quot;Close&quot; type=&quot;button&quot; onclick=&quot;Popover.dismissPopover(this);&quot;&gt;Close&lt;/button&gt;" data-toggle="popover" title="" tab-index="0" target="_blank" href="javascript:void(0);" data-original-title="Company Detail">VLBS</a>) को प्रस्तावित बोनस तथा लाभांसलाई स्वीकृति दिएको हो । दुवै संस्थाले अब साधारण सभाको मिति निर्धारण गरी राष्ट्र बैंकबाट स्वीकृत लाभांस प्रस्ताव पारित गराउने छन् ।</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="col-sm-6">
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="media-news media-news-sm clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl01_NewsBlock1_ctl00_LatestNews1_divNews">
-                        <div class="media-wrap">
-                            <a href="/NewsDetail.aspx?newsID=28741">
-                                <img class="lazy" data-original="Uploads/Repository\636137855793660932.jpg" alt="एनबी इन्स्योरेन्सको कम्पनी सचिवमा शरण रेग्मी" src="/content/images/load-image.gif">
+                <div class="col-lg-12">
+                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl00_NewsBlock1_ctl00_LatestNews2_divNews">
+                        <div class="media-wrap media-left">
+                            <a href="/NewsDetail.aspx?newsID=28738">
+                                <img class="lazy" data-original="Uploads/Repository\636137833453565653.png" alt="तिहारपछिको सेयरबजारमा सामान्य सुधार, किन बढ्यो एनएमबि माइक्रोको सेयरमूल्य ?" src="Uploads/Repository\636137833453565653.png" style="display: inline;">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-title">
-                                <a href="/NewsDetail.aspx?newsID=28741">एनबी इन्स्योरेन्सको कम्पनी सचिवमा शरण रेग्मी</a>
+                                <a href="/NewsDetail.aspx?newsID=28738">तिहारपछिको सेयरबजारमा सामान्य सुधार, किन बढ्यो एनएमबि माइक्रोको सेयरमूल्य ?</a>
                             </h4>
                             <span class="media-label">Nov 03, 2016</span>
-                            <div class="media-content">
-                                <p>एनबी इन्स्योरेन्स (<a css="" id="" data-company-display="news" data-href="/CompanyDetail.aspx?symbol=NBIL" data-symbol="NBIL" data-placement="bottom" data-trigger="manual" data-type="company" data-html="true" data-content="Loading ... &lt;button class=&quot;btn btn-danger btn-xs btn-block&quot; title=&quot;Close&quot; type=&quot;button&quot; onclick=&quot;Popover.dismissPopover(this);&quot;&gt;Close&lt;/button&gt;" data-toggle="popover" title="" tab-index="0" target="_blank" href="javascript:void(0);" data-original-title="Company Detail">NBIL</a>) को कम्पनी सचिवको जिम्मेवारी शरण रेग्मीले पाएका छन् । कम्पनीमा सहायक महाप्रबन्धकको जिम्मेवारी सम्हालिरहेका रेग्मीलाई इन्स्योरेन्स सञ्चालक समितिको बैठकले कम्पनी सचिवको जिम्मेवारी पनि दिने निर्णय गरेको हो ।</p>
-                            </div>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="media-news media-news-sm clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl01_NewsBlock1_ctl00_LatestNews2_divNews">
-                        <div class="media-wrap">
+                <div class="col-lg-12">
+                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl00_NewsBlock1_ctl00_LatestNews3_divNews">
+                        <div class="media-wrap media-left">
+                            <a href="/NewsDetail.aspx?newsID=28737">
+                                <img class="lazy" data-original="Uploads/Repository\636137833196473965.png" alt="एनएमबी माइक्रोफाइनान्सको १ सय २० प्रतिशत हकप्रद कहिलेदेखि हुँदैछ निष्काशन ?" src="Uploads/Repository\636137833196473965.png" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-title">
+                                <a href="/NewsDetail.aspx?newsID=28737">एनएमबी माइक्रोफाइनान्सको १ सय २० प्रतिशत हकप्रद कहिलेदेखि हुँदैछ निष्काशन ?</a>
+                            </h4>
+                            <span class="media-label">Nov 03, 2016</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl00_NewsBlock1_ctl00_LatestNews4_divNews">
+                        <div class="media-wrap media-left">
                             <a href="/NewsDetail.aspx?newsID=28734">
-                                <img class="lazy" data-original="Uploads/Repository\636131661839756361.png" alt="सहारा विकास बैंक र लक्ष्मी लघुवित्तको हकप्रद भर्न छुट्यो कि ? आज अन्तिम दिन" src="/content/images/load-image.gif">
+                                <img class="lazy" data-original="Uploads/Repository\636131661839756361.png" alt="सहारा विकास बैंक र लक्ष्मी लघुवित्तको हकप्रद भर्न छुट्यो कि ? आज अन्तिम दिन" src="Uploads/Repository\636131661839756361.png" style="display: inline;">
                             </a>
                         </div>
                         <div class="media-body">
@@ -40,74 +72,36 @@
                                 <a href="/NewsDetail.aspx?newsID=28734">सहारा विकास बैंक र लक्ष्मी लघुवित्तको हकप्रद भर्न छुट्यो कि ? आज अन्तिम दिन</a>
                             </h4>
                             <span class="media-label">Nov 03, 2016</span>
-                            <div class="media-content">
-                                <p>सहारा विकास बैंक (<a css="" id="" data-company-display="news" data-href="/CompanyDetail.aspx?symbol=SHBL" data-symbol="SHBL" data-placement="bottom" data-trigger="manual" data-type="company" data-html="true" data-content="Loading ... &lt;button class=&quot;btn btn-danger btn-xs btn-block&quot; title=&quot;Close&quot; type=&quot;button&quot; onclick=&quot;Popover.dismissPopover(this);&quot;&gt;Close&lt;/button&gt;" data-toggle="popover" title="" tab-index="0" target="_blank" href="javascript:void(0);" data-original-title="Company Detail">SHBL</a>)को डेढ सय प्रतिशत हकप्रद तथा लक्ष्मी लघुवित (<a css="" id="" data-company-display="news" data-href="/CompanyDetail.aspx?symbol=LLBS" data-symbol="LLBS" data-placement="bottom" data-trigger="manual" data-type="company" data-html="true" data-content="Loading ... &lt;button class=&quot;btn btn-danger btn-xs btn-block&quot; title=&quot;Close&quot; type=&quot;button&quot; onclick=&quot;Popover.dismissPopover(this);&quot;&gt;Close&lt;/button&gt;" data-toggle="popover" title="" tab-index="0" target="_blank" href="javascript:void(0);" data-original-title="Company Detail">LLBS</a>) को शतप्रतिशत हकप्रद सेयरका लागि आवेदन दिने समयसिमा आज सकिदैछ । दुवै कम्पनीले गत असोज १४ गतेबाट हकप्रद बिक्री खुला गरेका थिए । सहाराको ग्लोबल आइएमई र लक्ष्मी लघुवित्तको एनएमबि क्यापिटल बिक्री प्रबन्धक रहेका छन् ।</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl01_NewsBlock1_ctl00_LatestNews3_divNews">
-                        <div class="media-wrap media-left">
-                            <a href="/NewsDetail.aspx?newsID=28731">
-                                <img class="lazy" data-original="Uploads/Repository\636137012264642750.png" alt="मर्जरबाट एक जोड एक बराबर तीन हैन, सून्य भन्दा तल पनि हुनसक्छ भन्ने उदाहरण" src="/content/images/load-image.gif">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-title">
-                                <a href="/NewsDetail.aspx?newsID=28731">मर्जरबाट एक जोड एक बराबर तीन हैन, सून्य भन्दा तल पनि हुनसक्छ भन्ने उदाहरण</a>
-                            </h4>
-                            <span class="media-label">Nov 02, 2016</span>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl01_NewsBlock1_ctl00_LatestNews4_divNews">
+                <div class="col-lg-12">
+                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl00_NewsBlock1_ctl00_LatestNews5_divNews">
                         <div class="media-wrap media-left">
-                            <a href="/NewsDetail.aspx?newsID=28729">
-                                <img class="lazy" data-original="Uploads/Repository\635943137970781250.jpg" alt="नेपाल बंगलादेश बैंकले कसरी बढायो खुद नाफा ८३ प्रतिशत ?" src="/content/images/load-image.gif">
+                            <a href="/NewsDetail.aspx?newsID=28733">
+                                <img class="lazy" data-original="Uploads/Repository\636122997277500000.jpg" alt="माछापुछ्रे र मितेरी बैंकको शेयर मूल्य कतिमा भयो समायोजन ?" src="Uploads/Repository\636122997277500000.jpg" style="display: inline;">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-title">
-                                <a href="/NewsDetail.aspx?newsID=28729">नेपाल बंगलादेश बैंकले कसरी बढायो खुद नाफा ८३ प्रतिशत ?</a>
+                                <a href="/NewsDetail.aspx?newsID=28733">माछापुछ्रे र मितेरी बैंकको शेयर मूल्य कतिमा भयो समायोजन ?</a>
                             </h4>
-                            <span class="media-label">Oct 30, 2016</span>
+                            <span class="media-label">Nov 03, 2016</span>
 
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl01_NewsBlock1_ctl00_LatestNews5_divNews">
+                <div class="col-lg-12">
+                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl00_NewsBlock1_ctl00_LatestNews6_divNews">
                         <div class="media-wrap media-left">
-                            <a href="/NewsDetail.aspx?newsID=28728">
-                                <img class="lazy" data-original="Uploads/Repository\636132889352038491.jpg" alt="जनता बैंकमा त्रिबेणी बिकास बैंक गाभिने सम्झौता, स्वाप रेसियो कति ?" src="/content/images/load-image.gif">
+                            <a href="/NewsDetail.aspx?newsID=28727">
+                                <img class="lazy" data-original="Uploads/Repository\636132705734931273.png" alt="प्रभु ईन्स्योरेन्सको साधारण सभाले पारित गर्यो लाभांस तथा हकप्रदको प्रस्ताव" src="Uploads/Repository\636132705734931273.png" style="display: inline;">
                             </a>
                         </div>
                         <div class="media-body">
                             <h4 class="media-title">
-                                <a href="/NewsDetail.aspx?newsID=28728">जनता बैंकमा त्रिबेणी बिकास बैंक गाभिने सम्झौता, स्वाप रेसियो कति ?</a>
-                            </h4>
-                            <span class="media-label">Oct 28, 2016</span>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="media-news media-news-xs clearfix" id="ctl00_ContentPlaceHolder1_rptLatestNews_ctl01_NewsBlock1_ctl00_LatestNews6_divNews">
-                        <div class="media-wrap media-left">
-                            <a href="/NewsDetail.aspx?newsID=28726">
-                                <img class="lazy" data-original="Uploads/Repository\636132690012128629.jpg" alt="एनबी ईन्स्योरेन्सले एकै दिन बिस्तार गर्यो तीन शाखा" src="/content/images/load-image.gif">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-title">
-                                <a href="/NewsDetail.aspx?newsID=28726">एनबी ईन्स्योरेन्सले एकै दिन बिस्तार गर्यो तीन शाखा</a>
+                                <a href="/NewsDetail.aspx?newsID=28727">प्रभु ईन्स्योरेन्सको साधारण सभाले पारित गर्यो लाभांस तथा हकप्रदको प्रस्ताव</a>
                             </h4>
                             <span class="media-label">Oct 28, 2016</span>
 
@@ -117,4 +111,3 @@
             </div>
         </div>
     </div>
-</div>
