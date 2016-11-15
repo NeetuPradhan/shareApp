@@ -29,7 +29,16 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-3 col-md-3 col-lg-2">Detail *</label>
                                     <div class="col-sm-4 col-md-3 col-lg-3">
-                                    <textarea name="detail" placeholder="Detail" rows="4S" cols="20" class="form-control"><?= set_value('detail',$info['detail']) ?></textarea>
+                                    <?php
+                                        $value='';
+                                          if(isset($info['detail'])) {
+                                            $value = stripslashes($info['detail']);
+                                          } else if($this->input->post('detail')) {
+                                            $value = stripslashes($this->input->post('detail'));
+                                          }
+                                          echo $this->ckeditor->editor('detail',$value);
+                                    ?>
+                                    <!-- <textarea name="detail" placeholder="Detail" rows="4S" cols="20" class="form-control"><?= set_value('detail',$info['detail']) ?></textarea> -->
                                         <?= form_error('detail') ?>
                                     </div>
                                 </div>
