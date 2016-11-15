@@ -49,22 +49,33 @@ class News extends MX_Controller {
 
         		$html.= '<div class="media">
                             <div class="media-wrap media-left">
-                                <a href="/NewsDetail.aspx?newsID=28738">
-                                    <img class="lazy" data-original="Uploads/Repository\636137833453565653.png" alt="'.$elementArr["title"].'" src="'.base_url()."images/no-image.jpg".'" style="height:100px;width:100px">
+                                <a href="'.getAnnouncementUrl().'detail/'.$elementArr['id'].'"  target="_blank">
+                                    <img class="lazy" alt="'.$elementArr["title"].'" src="'.base_url()."images/no-image.jpg".'" style="height:100px;width:100px">
                                 </a>
                                 </div>
                                 <div class="media-body">
                                     <h4 class="media-title">
-                                        <a href="/NewsDetail.aspx?newsID=28738">'.$elementArr["title"].'</a>
+                                        <a href="'.getNewsUrl().'detail/'.$elementArr['id'].'"  target="_blank">'.$elementArr["title"].'</a>
                                     </h4>
                                     <span class="media-label">'.formatDateTime($elementArr["added_date"],"M d,Y").'</span>
                                 </div>
                                 <div class="news_id" data-id="'.$elementArr["id"].'"></div>
                             </div>';
     		}
-		
 		echo json_encode(array('success'=>true,'moreState'=>$moreState,'html' => $html));
-		
+    }
+
+    public function detail($id) {
+    	$data['title'] = 'News';
+		$data['module'] = 'news';
+		$data['view_file'] = 'detail';
+		$data["news_detail"] = $this->news_model->get_single_news($id);
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
     }
 
 }

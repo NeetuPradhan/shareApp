@@ -15,13 +15,13 @@
             ?>
             <div>
                 <div class="media-wrap media-left">
-                    <a href="/NewsDetail.aspx?newsID=28738">
+                    <a href="<?php echo getNewsUrl().'detail/'.$value['id'];?>" target="_blank">
                         <img class="lazy" data-original="Uploads/Repository\636137833453565653.png" alt="<?php echo $value['title'];?>" src="<?php echo base_url().'images/no-image.jpg';?>" style="height:100px;width:100px">
                     </a>
                 </div>
                 <div class="media-body">
                     <h4 class="media-title">
-                        <a href="/NewsDetail.aspx?newsID=28738"><?php echo $value['title'];?></a>
+                        <a href="<?php echo getNewsUrl().'detail/'.$value['id'];?>" target="_blank"><?php echo $value['title'];?></a>
                     </h4>
                     <span class="media-label"><?php echo formatDateTime($value['added_date'],'M d,Y');?></span>
                 </div>
