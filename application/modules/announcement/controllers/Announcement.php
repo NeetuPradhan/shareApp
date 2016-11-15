@@ -51,7 +51,7 @@ class Announcement extends MX_Controller {
         			<div class="pull-left text-center">
 	            		<small style="width: 120px;" class="text-muted">'.formatDateTime($elementArr["added_date"],"M d,Y").'</small>
 	            		<br>
-			            <a href="/AnnouncementDetail.aspx?id=24334&amp;ntf=true">
+			            <a href="'.getAnnouncementUrl().'detail/'.$elementArr['id'].'" target="_blank">
 			                <span class="icon-stack icon-1x">
 			                    <i class="icon-stack-base icon-circle icon-1x text-primary"></i>
 			                    <i class="icon-file icon-1x icon-light"></i>
@@ -60,7 +60,7 @@ class Announcement extends MX_Controller {
         			</div>
         			<div class="announcement_id" data-id="'.$elementArr['id'].'"></div>
 			        <div class="media-body">
-			            <a href="/AnnouncementDetail.aspx?id=24334">
+			            <a href="'.getAnnouncementUrl().'detail/'.$elementArr['id'].'" target="_blank">
 			                '.$elementArr["title"].'
 			            </a>
 			        </div>
@@ -68,7 +68,19 @@ class Announcement extends MX_Controller {
     		}
 		
 		echo json_encode(array('success'=>true,'moreState'=>$moreState,'html' => $html));
-		
+    }
+
+    public function detail($id) {
+    	$data['title'] = 'Announcement';
+		$data['module'] = 'announcement';
+		$data['view_file'] = 'detail';
+		$data["announcement_detail"] = $this->announcement_model->get_single_announcement($id);
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
     }
 
 }

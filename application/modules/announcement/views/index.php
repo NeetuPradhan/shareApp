@@ -15,7 +15,7 @@
                         <div class="pull-left text-center">
                             <small style="width: 120px;" class="text-muted"><?php echo formatDateTime($value['added_date'],'M d,Y');?></small>
                             <br>
-                            <a href="/AnnouncementDetail.aspx?id=24334&amp;ntf=true">
+                            <a href="<?php echo getAnnouncementUrl().'detail/'.$value['id'];?>" target="_blank">
                                 <span class="icon-stack icon-1x">
                                     <i class="icon-stack-base icon-circle icon-1x text-primary"></i>
                                     <i class="icon-file icon-1x icon-light"></i>
@@ -23,7 +23,7 @@
                             </a>
                         </div>
                         <div class="media-body">
-                            <a href="/AnnouncementDetail.aspx?id=24334">
+                            <a href="<?php echo getAnnouncementUrl().'detail/'.$value['id'];?>" target="_blank">
                                 <?php echo $value['title'];?>
                             </a>
                         </div>

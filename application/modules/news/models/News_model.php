@@ -39,4 +39,10 @@ class News_model extends CI_Model {
         return $query->result_array();
 	}
 
+	function get_single_news($id) {
+        $options = array('id' => $id);
+        $query = $this->db->get_where('tbl_news', $options, 1);
+        return $query->row_array();
+    }
+
 }
