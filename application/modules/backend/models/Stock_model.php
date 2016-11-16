@@ -29,13 +29,19 @@ class Stock_model extends CI_Model {
         return $this->db->insert_id();
     }
 
-    function update($data, $where=array(), $table='') {
+    function delete($where=array(), $table='') {
         if($table == '') {
             $table = $this->table;
         }
         $this->db->reset_query();
-        $this->db->where($where);
-        $this->db->update($table, $data);
+        // $this->db->where($where);
+        // $this->db->delete($table);
+        $this->db->truncate($table);
+        if($this->db->affected_rows() > 0) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }

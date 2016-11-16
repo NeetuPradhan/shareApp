@@ -47,6 +47,11 @@ class Stock extends MX_Controller {
                 $data['header'] = $header;
                 $data['values'] = $arr_data;
 
+                $allData = $this->stock_model->get_all();
+                if(isset($allData) && !empty($allData)){
+                    $this->stock_model->delete();
+                }
+
                 foreach ($data['values'] as $key => $value) {
                     $arrData = array(
                         'company'               => $value['A'],
@@ -60,13 +65,7 @@ class Stock extends MX_Controller {
                         'difference'            => $value['I'],
                         'added_date'            => date('Y-m-d H:i:s'),
                     );
-
                     $this->stock_model->add($arrData);
-                    // $allData = $this->stock_model->get_all();
-                    // foreach ($allData as $key => $stockData) {
-                    //     $stock_id =  $stockData['id'];
-                    //     $this->stock_model->update($arrData,$stock_id);
-                    // }
                 }
                 
                 $this->session->set_userdata( 'flash_msg_type', "success" );
