@@ -80,5 +80,68 @@ class Stock extends MX_Controller {
         $this->load->view('backend/admin', $data);
     }
 
+    public function add_live_stock_info() {
+        $url = "http://nepalstock.com.np/api/livedata";
+
+        //initiate curl
+        $curl = curl_init();
+
+        // Curl Authentication:
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($curl, CURLOPT_USERPWD, "kccstd:oTdKz7wp8B7W04G");
+        curl_setopt($ch, CURLOPT_HTTPHEADER,array('Accept:application/json'));
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        $result = json_decode($result);
+
+        $allData = $this->stock_model->get_all('tbl_nepse_api_data');
+        if(isset($allData) && !empty($allData)){
+            $this->stock_model->delete('tbl_nepse_api_data');
+        }
+
+        foreach ($result as $key => $value) {
+            $arrData = array(
+                'api_id'                                        => $value->ID,
+                'date'                                          => $value->Date,
+                'time'                                          => $value->Time,
+                'stock_symbol'                                  => $value->StockSymbol,
+                'opening_price'                                 => $value->OpeningPrice,
+                'last_trade_price'                              => $value->LastTradePrice,
+                'last_trade_time'                               => $value->LastTradeTime,
+                'daily_stock_stats_average_price'               => $value->DailyStockStatsAveragePrice,
+                'daily_stock_stats_52_week_high'                => $value->DailyStockStats52WeekHigh,
+                'daily_stock_stats_52_week_low'                 => $value->DailyStockStats52WeekLow,
+                'daily_stock_stats_highest_price'               => $value->DailyStockStatsHighestPrice,
+                'daily_stock_stats_lowest_price'                => $valueDailyStockStatsLowestPrice,
+                'daily_stock_stats_percentage_change_in_price'  => $valueDailyStockStatsPercentageChangeInPrice,
+                'daily_stock_stats_last_trade_volume'           => $valueDailyStockStatsLastTradeVolume,
+                'daily_stock_stats_last_highest_volume'         => $valueDailyStockStatsHighestVolume,
+                'daily_stock_stats_last_lowest_volume'          => $valueDailyStockStatsLowestVolume,
+                'daily_stock_stats_total_traded_volume'         => $valueDailyStockStatsTotalTradedVolume,
+                'daily_stock_stats_percentage_change_in_volume' => $valueDailyStockStatsPercentageChangeInVolume,
+                'daily_stock_stats_total_no_of_trades'          => $valueDailyStockStatsTotalNoOfTrades,
+                'daily_stock_stats_turn_over'                   => $valueDailyStockStatsTurnOver,
+                'daily_stock_stats_adsolute_change_in_price'    => $valueDailyStockStatsAdsoluteChangeInPrice,
+                'daily_stock_price_movement_id'                 => $valueDailyStockPriceMovementID,
+                'contract_type'                                 => $valueContractType,
+                'daily_stock_stats_previous_day_closing_price'  => $valueDailyStockStatsPreviousDayClosingPrice,
+                'stock_name'                                    => $valueDailyStockStats52WeekHigh,
+                'pulled_datetime'                               => $valueDailyStockStats52WeekHigh,
+                
+            );
+            $this->stock_model->add($arrData,'tbl_nepse_api_data');
+        }
+           
+        $this->session->set_userdata( 'flash_msg_type', "success" );
+        $this->session->set_flashdata('flash_msg', 'Stock upload sucessfully.');
+        redirect(ADMIN_PATH . '/stock', 'refresh');
+
+    
+    }
+
 }
 
