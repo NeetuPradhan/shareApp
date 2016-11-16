@@ -99,8 +99,9 @@ class Stock extends MX_Controller {
         $result = json_decode($result);
 
         $allData = $this->stock_model->get_all('tbl_nepse_api_data');
+
         if(isset($allData) && !empty($allData)){
-            $this->stock_model->delete('tbl_nepse_api_data');
+            $this->stock_model->delete('','tbl_nepse_api_data');
         }
 
         foreach ($result as $key => $value) {
@@ -116,21 +117,21 @@ class Stock extends MX_Controller {
                 'daily_stock_stats_52_week_high'                => $value->DailyStockStats52WeekHigh,
                 'daily_stock_stats_52_week_low'                 => $value->DailyStockStats52WeekLow,
                 'daily_stock_stats_highest_price'               => $value->DailyStockStatsHighestPrice,
-                'daily_stock_stats_lowest_price'                => $valueDailyStockStatsLowestPrice,
-                'daily_stock_stats_percentage_change_in_price'  => $valueDailyStockStatsPercentageChangeInPrice,
-                'daily_stock_stats_last_trade_volume'           => $valueDailyStockStatsLastTradeVolume,
-                'daily_stock_stats_last_highest_volume'         => $valueDailyStockStatsHighestVolume,
-                'daily_stock_stats_last_lowest_volume'          => $valueDailyStockStatsLowestVolume,
-                'daily_stock_stats_total_traded_volume'         => $valueDailyStockStatsTotalTradedVolume,
-                'daily_stock_stats_percentage_change_in_volume' => $valueDailyStockStatsPercentageChangeInVolume,
-                'daily_stock_stats_total_no_of_trades'          => $valueDailyStockStatsTotalNoOfTrades,
-                'daily_stock_stats_turn_over'                   => $valueDailyStockStatsTurnOver,
-                'daily_stock_stats_adsolute_change_in_price'    => $valueDailyStockStatsAdsoluteChangeInPrice,
-                'daily_stock_price_movement_id'                 => $valueDailyStockPriceMovementID,
-                'contract_type'                                 => $valueContractType,
-                'daily_stock_stats_previous_day_closing_price'  => $valueDailyStockStatsPreviousDayClosingPrice,
-                'stock_name'                                    => $valueDailyStockStats52WeekHigh,
-                'pulled_datetime'                               => $valueDailyStockStats52WeekHigh,
+                'daily_stock_stats_lowest_price'                => $value->DailyStockStatsLowestPrice,
+                'daily_stock_stats_percentage_change_in_price'  => $value->DailyStockStatsPercentageChangeInPrice,
+                'daily_stock_stats_last_trade_volume'           => $value->DailyStockStatsLastTradeVolume,
+                'daily_stock_stats_last_highest_volume'         => $value->DailyStockStatsHighestVolume,
+                'daily_stock_stats_last_lowest_volume'          => $value->DailyStockStatsLowestVolume,
+                'daily_stock_stats_total_traded_volume'         => $value->DailyStockStatsTotalTradedVolume,
+                'daily_stock_stats_percentage_change_in_volume' => $value->DailyStockStatsPercentageChangeInVolume,
+                'daily_stock_stats_total_no_of_trades'          => $value->DailyStockStatsTotalNoOfTrades,
+                'daily_stock_stats_turn_over'                   => $value->DailyStockStatsTurnOver,
+                'daily_stock_stats_adsolute_change_in_price'    => $value->DailyStockStatsAdsoluteChangeInPrice,
+                'daily_stock_price_movement_id'                 => $value->DailyStockPriceMovementID,
+                'contract_type'                                 => $value->ContractType,
+                'daily_stock_stats_previous_day_closing_price'  => $value->DailyStockStatsPreviousDayClosingPrice,
+                'stock_name'                                    => $value->StockName,
+                'pulled_datetime'                               => date('Y-m-d H:i:s'),
                 
             );
             $this->stock_model->add($arrData,'tbl_nepse_api_data');

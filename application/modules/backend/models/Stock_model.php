@@ -17,7 +17,7 @@ class Stock_model extends CI_Model {
         foreach ($order_by as $key => $value) {
             $this->db->order_by($key, $value);
         }
-       return $this->db->get($this->table)->result_array();
+       return $this->db->get($table)->result_array();
     }
 
     function add($data, $table='') {
@@ -34,8 +34,6 @@ class Stock_model extends CI_Model {
             $table = $this->table;
         }
         $this->db->reset_query();
-        // $this->db->where($where);
-        // $this->db->delete($table);
         $this->db->truncate($table);
         if($this->db->affected_rows() > 0) {
             return TRUE;
