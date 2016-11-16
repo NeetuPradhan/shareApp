@@ -66,6 +66,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="stat"><a href="<?=base_url().'backend/company';?>"><img src="<?=base_url()?>images/add.png"></a> </div>
                 </div>
                 <div class="butpro butstyle">
+                    <div class="sub"><h2>Stock Type</h2></div>
+                    <div class="stat"><a href="<?=base_url().'backend/stock_type';?>"><img src="<?=base_url()?>images/stock_type.png"></a> </div>
+                </div>
+                <div class="butpro butstyle">
                     <div class="sub"><h2>Stock Info Upload</h2></div>
                     <div class="stat"><a href="<?=base_url().'backend/stock';?>"><img src="<?=base_url()?>images/neighbourhood.png"></a> </div>
                 </div>
