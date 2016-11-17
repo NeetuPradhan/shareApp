@@ -1,4 +1,3 @@
-<body>
 	<div>
         <div class="topbar">
             <div class="container">
@@ -127,11 +126,15 @@
                                 </li>
                             </ul>
                         </li>
+                        <?php 
+                            if($this->helper_model->validate_user_session()) { 
+                                $url = getMemberUrl();
+                        ?>
                         <li class="dropdown active">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Portfolio <b class="icon-angle-down"></b></a>
                             <ul class="dropdown-menu">                                    
                                 <li class="">
-                                    <a href="/MyPortfolio.aspx">My Portfolio</a>
+                                    <a href="<?=$url.'portfolio'?>">My Portfolio</a>
                                 </li>
                                 <li class="">
                                     <a href="/MyWatchlist.aspx">My Watchlist</a>
@@ -157,6 +160,7 @@
                                 </li>
                             </ul>
                         </li>
+                        <?php } ?>
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">IPO <b class="icon-angle-down"></b></a>
                             <ul class="dropdown-menu">        
@@ -247,4 +251,3 @@
             </div>
         </nav>
     </div>
-</body>

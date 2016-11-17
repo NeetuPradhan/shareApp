@@ -15,8 +15,7 @@ class Stock_type extends MX_Controller {
     public function index() {
         $config['base_url'] = site_url(ADMIN_PATH . '/stock_type/page');
         $data['main'] = 'backend/stock_type/list';
-        $query = $this->db->get('tbl_company_type');
-        $config['total_rows'] = $query->num_rows();
+        $config['total_rows'] = $this->stock_type_model->count();
 
         $config['per_page'] = '300';
         $offset = $this->uri->segment(4, 0);

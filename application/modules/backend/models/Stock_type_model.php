@@ -62,12 +62,12 @@ class Stock_type_model extends CI_Model {
 
 
     function count($where=array(), $table='') {
-        if($table = '') {
+        if($table == '') {
             $table = $this->table;
         }
         $this->db->reset_query();
         $this->db->where($where);
-        return $this->db->count_all($table);
+        return $this->db->count_all_results($table);
     }
 
 

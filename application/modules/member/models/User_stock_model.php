@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Master_model extends CI_Model {
-	var $table = 'table_name';
+class User_stock_model extends CI_Model {
+	var $table = 'tbl_user_stock';
 		
 	function __construct()
     {
@@ -68,6 +68,8 @@ class Master_model extends CI_Model {
         $this->db->reset_query();
         $this->db->where($where);
         return $this->db->count_all_results($table);
+        /*$this->db->count_all_results($table);
+        echo $this->db->last_query(); exit;*/
     }
 
 
@@ -103,6 +105,7 @@ class Master_model extends CI_Model {
         $this->db->reset_query();
         $this->db->where($where);
         $this->db->update($table, $data);
+        return $this->db->affected_rows();
     }
 
 
