@@ -59,3 +59,4 @@ $route['t_a_c'] = "home/footer_contents/t_a_c";
 $route['f_a_qs'] = "home/footer_contents/f_a_qs";
 $route['member/forgot-password'] = "member/login/forgot_password";
 $route['member/logout'] = "member/login/logout";
+$route['company/logout'] = "company/login/logout";

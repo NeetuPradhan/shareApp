@@ -80,7 +80,7 @@ class Login extends MX_Controller {
 		$data = array('company_email', 'company_pw', 'is_Login', 'user_id');
 		$this->session->unset_userdata($data);
 		$this->session->sess_destroy();
-			redirect(getHomeUrl());
+			redirect(getCompanyUrl().'login');
 		
 	}
 

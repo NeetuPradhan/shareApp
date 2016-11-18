@@ -9,16 +9,16 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input name="email" type="text" value="<?php echo set_value('email');?>" class="form-control" placeholder="Email" maxlength="50"/>
+                                <input name="email" type="text" value="<?php if(isset($_COOKIE['user_email'])) { echo $_COOKIE['user_email']; } else { echo set_value('email');} ?>" class="form-control" placeholder="Email" maxlength="50"/>
                                 <?php echo form_error('email')?>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input name="password" type="password" class="form-control" placeholder="Password" />
+                                <input name="password" type="password" value="<?php if(isset($_COOKIE['user_pw'])) echo $_COOKIE['user_pw']; ?>" class="form-control" placeholder="Password" />
                                 <?php echo form_error('password')?>
                             </div>
                             <div class="form-group">
-                            <label class="checkbox1"><input type="checkbox" name="remember_me" checked=""><i> </i>Remember Me</label></br>
+                            <label class="checkbox1"><input type="checkbox" <?php if(isset($_COOKIE['user_email'])) echo "checked";?> name="remember_me"><i> </i>Remember Me</label></br>
                                 <input type="submit" class="btn btn-primary" value="Log in">
                                 <a title="Forgot password" href="<?php echo getMemberLoginUrl().'forgot-password'?>">forgot password?</a>
                             </div>

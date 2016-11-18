@@ -80,7 +80,7 @@ class Company_model extends CI_Model {
         $confirm = "<a target='_blank' href='".getCompanyUrl()."validate_pw_reset_credentials/$key/$email'>here</a>";        
         $parseElement = array(
             "USERNAME" => $company_details['name'],
-            "SITENAME" => 'JobPortal',
+            "SITENAME" => $this->config->item('site_name'),
             "LINK" => $confirm,
             "SITELINK" => base_url()
         );

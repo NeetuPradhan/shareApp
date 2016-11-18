@@ -41,7 +41,7 @@ class Login extends MX_Controller {
 				delete_cookie('user_pw');
 			}
 
-			redirect(getHomeUrl());
+			redirect(getMemberUrl().'portfolio');
 		}
 		$data['title'] = 'Login';
 		$data['module'] = 'member';
@@ -80,7 +80,7 @@ class Login extends MX_Controller {
 		$data = array('user_email', 'user_pw', 'is_Login', 'user_id');
 		$this->session->unset_userdata($data);
 		$this->session->sess_destroy();
-			redirect(getHomeUrl());
+			redirect(getMemberUrl().'login');
 		
 	}
 
