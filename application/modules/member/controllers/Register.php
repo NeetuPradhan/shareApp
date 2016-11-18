@@ -9,6 +9,9 @@ class Register extends MX_Controller {
 	  	$this->form_validation->CI =& $this;
 	  	$this->load->library('form_validation');
 	  	$this->load->model('register_member_model');
+	  	if($this->helper_model->validate_user_session()){
+			redirect(getHomeUrl());
+		}
 	}
 
 	public function index() {

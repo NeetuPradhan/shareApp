@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row">
-        <form role="form"  method="post" action="<?=getMemberUrl().'forgot_pass'?>">
+        <form role="form"  method="post" action="<?=getMemberLoginUrl().'forgot-password'?>">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <p>Please enter your email address below. We'll send you a password reset link</p>
@@ -14,13 +14,13 @@
                             <label class="control-label col-sm-3 col-md-3 col-lg-2">Email</label>
                             <div class="col-sm-4 col-md-3 col-lg-3"> 
                                 <input name="email" type="text"  class="form-control " placeholder="Email" maxlength="50"/>
-                                <?php echo form_error('email')?>
+                                <?php echo form_error('email');?>
                             </div>
                         </div>
                     </div>  
                 </div>
                 <div class="panel-footer text-center">
-                    <input type="submit" value="Save" id="btnSave"  title="Save" class="btn btn-primary" />
+                    <input type="submit" value="Send Password Reset Request" id="btnSave"  title="Send Password Reset Request" class="btn btn-primary" />
                     <a href="<?php echo getHomeUrl();?>"  class="btn btn-default" title="Cancel">Cancel</a>
                 </div>
             </div>

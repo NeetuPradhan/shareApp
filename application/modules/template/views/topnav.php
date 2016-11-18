@@ -219,7 +219,7 @@
                                 </li>
                                 <?php }?>
                                 <li class="divider"></li>
-                                <li><a href="<?php echo $url.'login/logout'?>">Log Out</a></li>
+                                <li><a href="<?php echo $url.'logout'?>">Log Out</a></li>
                             </ul>
                         </li>
                         <?php } else {?>

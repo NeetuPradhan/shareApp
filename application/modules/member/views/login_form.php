@@ -20,7 +20,7 @@
                             <div class="form-group">
                             <label class="checkbox1"><input type="checkbox" name="remember_me" checked=""><i> </i>Remember Me</label></br>
                                 <input type="submit" class="btn btn-primary" value="Log in">
-                                <a title="Forgot password" href="<?php echo getMemberUrl().'forgot_pass'?>">forgot password?</a>
+                                <a title="Forgot password" href="<?php echo getMemberLoginUrl().'forgot-password'?>">forgot password?</a>
                             </div>
                             <div id="verification_link">
                                 <!-- <a id="btnVerifyEmail" title="Resend email verification link" class="btn btn-default">Resend Email Verification Link</a> -->

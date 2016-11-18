@@ -54,3 +54,10 @@ if(!function_exists('getNewsUrl')){
 		return base_url().'news/';
 	}
 }
+
+
+if(!function_exists('getMemberLoginUrl')){
+	function getMemberLoginUrl() {
+		return base_url().'member/login/';
+	}
+}
