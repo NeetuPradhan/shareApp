@@ -42,8 +42,8 @@
 
                 <?php $this->load->view('home/_layouts/indices');?>
                 <?php $this->load->view('home/_layouts/market_summary');?>
-                <?php $this->load->view('home/_layouts/gainers');?>
-                <?php $this->load->view('home/_layouts/losers');?>
+                <?php $this->load->view('home/_layouts/gainers/gainers_list',$gainers);?>
+                <?php $this->load->view('home/_layouts/losers/losers_list',$losers);?>
                 <?php $this->load->view('home/_layouts/top_turnovers');?>
                 <?php $this->load->view('home/_layouts/top_sectors');?>
             </div>

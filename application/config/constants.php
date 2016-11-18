@@ -107,4 +107,4 @@ define('TEMP_DIR',UPLOAD_DIR.'temp/');
 define('LOGO_DIR',UPLOAD_DIR.'logo/');
 define('CSV_DIR',UPLOAD_DIR.'csv/');
 
-define('HOME_PAGE_LIMIT',3);
+define('HOME_PAGE_LIMIT',10);

@@ -37,12 +37,11 @@
                     <div class="col-sm-12 col-md-3">
                         <hr class="visible-xs-block visible-sm-block">
                         <address>
-                            <strong>MERO LAGANI</strong>
-                            <br>4th Floor, Orchid Hotel Building
-                            <br>Tripureshwor, Kathmandu, Nepal
-                            <br><abbr title="Telephone">Tel:</abbr> (+977) 01-4215101/4215184
-                            <br><abbr title="Mobile">Mobile:</abbr> 9860315496
-                            <br><abbr title="E-mail address">E-mail:</abbr> support@asteriskt.com
+                            <strong><?=$this->config->item('site_name')?></strong>
+                            <br><?=$this->config->item('address')?>
+                            <br><abbr title="Mobile">Mobile:</abbr><?=$this->config->item('phone')?>
+                            <br><abbr title="Telephone">Fax:</abbr><?=$this->config->item('fax')?>
+                            <br><abbr title="E-mail address">E-mail:</abbr><?=$this->config->item('email')?>
                         </address>
                         <ul class="list-inline list-social-icons">
                             <li>

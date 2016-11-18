@@ -20,6 +20,9 @@ class Home extends MX_Controller {
 		$data['view_file'] = 'home';
 		$data["announcement"] = $this->announcement_model->get_announcement(HOME_PAGE_LIMIT);
 		$data["news"] = $this->news_model->get_news(HOME_PAGE_LIMIT);
+		$data["gainers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'desc'),5);
+		$data["losers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'asc'),5);
+		$data["total_turnovers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price','asc'),5);
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
@@ -97,12 +100,11 @@ class Home extends MX_Controller {
 		echo Modules::run('Template/render_html', $data);
     }
 
-    public function announcement_more() {
-    	$data['title'] = 'Home';
+    function gainers_more() {
+    	$data["gainers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'desc'),15);
+		$data['title'] = 'Home';
 		$data['module'] = 'home';
-		$data['view_file'] = '_layouts/announcement/list_more';
-		$data["announcement"] = $this->home_model->get_announcement(HOME_PAGE_LIMIT);
-		$data["announcement_total"] = $this->home_model->totalRecordAnnouncement();
+		$data['view_file'] = '_layouts/gainers/gainers_more';
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
@@ -110,26 +112,18 @@ class Home extends MX_Controller {
 						);
 		echo Modules::run('Template/render_html', $data);
     }
-  
-    public function more_list() {
-    	$announcement_id = $_POST['json_announcement_id'];
-    	$getMoreCount = $_POST['more_count'];
-    	$data['announcement_list'] = $this->home_model->get_remaining_announcement($announcement_id);
-    	$more_count = HOME_PAGE_LIMIT +$getMoreCount;
-    	$moreState['moreMsg'] = '';
-		$getLimitMore = $this->home_model->get_announcement($more_count,HOME_PAGE_LIMIT);
-		if(empty($getLimitMore)) {
-			$moreState['moreMsg'] = 'yes';
-		} else {
-			$moreState['moreMsg'] = 'no';
-		}
-		$moreState['more_btn'] = $more_count;
-		// $data['module'] = 'home';
-		// $data['view_file'] = '_layouts/announcement/list_more';
-		
-		// $dataHtml	=  $this->load->view('home/_layouts/announcement_more',$data);
-		echo json_encode(array('success'=>true,'dataHtml'=>$dataHtml));
-		
+
+    function losers_more() {
+    	$data["losers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'asc'),15);
+		$data['title'] = 'Home';
+		$data['module'] = 'home';
+		$data['view_file'] = '_layouts/losers/losers_more';
+		$data['scripts'] = array();
+		$data['stylesheets'] = array(
+							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
+							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+						);
+		echo Modules::run('Template/render_html', $data);
     }
 
 }

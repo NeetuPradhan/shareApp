@@ -18,6 +18,8 @@ class Announcement extends MX_Controller {
 		$data['view_file'] = 'list';
 		$data["announcement"] = $this->announcement_model->get_announcement(HOME_PAGE_LIMIT);
 		$data["announcement_total"] = $this->announcement_model->totalRecordAnnouncement();
+		// $data["news_total"] = $this->announcement_model->totalRecordnews();
+		$data["gainers"] = $this->announcement_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'desc'),5);
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 

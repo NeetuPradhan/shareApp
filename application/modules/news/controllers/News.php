@@ -18,6 +18,8 @@ class News extends MX_Controller {
 		$data['view_file'] = 'list';
 		$data["news"] = $this->news_model->get_news(HOME_PAGE_LIMIT);
 		$data["news_total"] = $this->news_model->totalRecordnews();
+		$data["gainers"] = $this->news_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'desc'),5);
+		$data["losers"] = $this->news_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'asc'),5);
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
@@ -70,6 +72,8 @@ class News extends MX_Controller {
 		$data['module'] = 'news';
 		$data['view_file'] = 'detail';
 		$data["news_detail"] = $this->news_model->get_single_news($id);
+		$data["gainers"] = $this->news_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'desc'),5);
+		$data["losers"] = $this->news_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'asc'),5);
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 

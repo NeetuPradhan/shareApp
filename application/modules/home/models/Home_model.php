@@ -49,4 +49,16 @@ class Home_model extends CI_Model {
 		return $result->row_array();
 	}
 
+	function get_all($table='', $order_by=array(),$limit='') {
+        if($table == '')  {
+            $table = $this->table;
+        }
+        $this->db->reset_query();
+        foreach ($order_by as $key => $value) {
+            $this->db->order_by($key, $value);
+        }
+        $this->db->limit($limit);
+       	return $this->db->get($table)->result_array();
+    }
+
 }

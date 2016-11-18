@@ -89,7 +89,7 @@ class Stock extends MX_Controller {
         // Curl Authentication:
         curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($curl, CURLOPT_USERPWD, "kccstd:oTdKz7wp8B7W04G");
-        curl_setopt($ch, CURLOPT_HTTPHEADER,array('Accept:application/json'));
+        curl_setopt($curl, CURLOPT_HTTPHEADER,array('Accept:application/json'));
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 
