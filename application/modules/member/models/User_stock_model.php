@@ -127,7 +127,18 @@ class User_stock_model extends CI_Model {
             $select = '*';
         }
         $this->db->select($select);
-        return $this->db->get($table)->row_array();
+        return $this->db->get($table)->result_array();
+    }
+
+
+    public function get_user_stock_list($limit, $offset) {
+        $this->db->select('us.*');
+        $this->db->select('nad.stock_name, nad.stock_symbol');
+        $this->db->from('tbl_user_stock us');
+        $this->db->join('tbl_nepse_api_data nad', 'us.company_id = nad.id','left');
+        $this->db->where('us.id', $this->session->userdata('user_id'));
+        $this->db->limit($limit, $offset);
+        return $this->db->get()->result_array();
     }
 
 

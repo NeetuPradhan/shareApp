@@ -27,10 +27,11 @@ class User_stock extends MX_Controller {
         $this->pagination->initialize($config);
 
         $where = array('user_id' => $this->session->userdata('user_id'));
-        $data['stocks'] = $this->user_stock_model->get_with_limit($where, $config['per_page'], $offset);
+        // $data['stocks'] = $this->user_stock_model->get_with_limit($where, $config['per_page'], $offset);
+        $data['stocks'] = $this->user_stock_model->get_user_stock_list($config['per_page'], $offset);
+        // prePrint($data['stocks']);
         // $data['stock_status'] = $this->_stock_status($data['stocks']);
         $data['links'] = $this->pagination->create_links();
-        $data['scripts'] = array();
         $data['stylesheets'] = array(
 							base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
 							base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
@@ -41,27 +42,47 @@ class User_stock extends MX_Controller {
 	}
 
 	function add_stock() {
-		$this->form_validation->set_rules('stock_type','Stock Type','required|xss_clean');
-		$this->form_validation->set_rules('company','Company Name','required|xss_clean');
+		$this->form_validation->set_rules('stock_type_id','Stock Type','required|xss_clean');
+		$this->form_validation->set_rules('company_id','Company','required|xss_clean');
 		$this->form_validation->set_rules('quantity','Quantity','integer|greater_than[0]|required|xss_clean');
-		$this->form_validation->set_rules('rate','Rate','numeric|greater_than_equql_to[0]|required|xss_clean');
-		$this->form_validation->set_rules('broker','Broker','xss_clean');
+		$this->form_validation->set_rules('rate','Rate','numeric|greater_than_equal_to[0]|required|xss_clean');
+		$this->form_validation->set_rules('broker_id','Broker','xss_clean');
 		$this->form_validation->set_rules('transaction_date','Transaction Date','xss_clean');
+		$this->form_validation->set_rules('transaction_no','Transaction Number','xss_clean');
 
 		if($this->form_validation->run()) {
-			$data['title'] = 'My Stocks';
-			$data['module'] = 'member';
-			$data['view_file'] = 'user_stock/home';
+			$data = array(
+					'user_id' => $this->session->userdata('user_id'),
+					'transaction_no' => $this->input->post('transaction_no'),
+					'stock_type_id' => $this->input->post('stock_type_id'),
+					'company_id' => $this->input->post('company_id'),
+					'quantity' => $this->input->post('quantity'),
+					'rate' => $this->input->post('rate'),
+					'broker_id' => $this->input->post('broker_id'),
+					'transaction_date' => $this->input->post('transaction_date'),
+					'added_date' => date("Y-m-d H:i:s")
+				);
+			$this->user_stock_model->add($data);
+			$this->session->set_userdata( 'user_flash_msg_type', "success" );
+            $this->session->set_flashdata('user_flash_msg', 'Stocks Added Successfully');
+			redirect(getMemberUrl().'portfolio');
 		} else {
+			$data['stock_types'] = $this->user_stock_model->get_select('id, type', array('status' => '1'), '', '', array(), 'tbl_stock_type');
+			$data['brokers'] = $this->user_stock_model->get_select('id, name, code', array('status' => '1'), '', '', array(), 'tbl_broker');
+			$data['companies'] = $this->user_stock_model->get_select('id, stock_name, stock_symbol', array('status' => '1'), '', '', array(), 'tbl_nepse_api_data');
 			$data['title'] = 'Add New Stock';
 			$data['module'] = 'member';
 			$data['view_file'] = 'user_stock/add';
-	        $data['scripts'] = array();
+	        $data['scripts'] = array(
+	        					base_url().'assets/common/datepicker/jquery-ui.min.js',
+	        					base_url().'assets/admin/template/plugins/select2/select2.full.min.js'
+	        				);
 	        $data['stylesheets'] = array(
-								base_url().'/assets/front/bundles/css/main2007a90.css?v=sf09e7N2cOLRz3r2uJRde6mfJkm8AsWpErV9UgDduKs1', 
-								base_url().'/assets/front/bundles/css/site20563a4.css?v=fjdWJPKvJckvR_S-NOATm8ROWjfIPYAWnHimvspxu4s1',
+	        					base_url().'assets/admin/template/plugins/select2/select2.min.css',
+	        					base_url().'assets/common/datepicker/jquery-ui.css',
+								base_url().'assets/front/bundles/css/main2007a90.css', 
+								base_url().'assets/front/bundles/css/site20563a4.css',
 							);
-	        // prePrint($data);
 
 	        echo Modules::run('template/render_html', $data);
 		}

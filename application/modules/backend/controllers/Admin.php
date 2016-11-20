@@ -193,14 +193,12 @@ class Admin extends MX_Controller {
 				$this->session->set_userdata( 'flash_msg_type', "danger" );
 				$this->session->set_flashdata( 'flash_msg', "Sorry, We cannot reset your password currently." );
 				$this->validate_admin_pw_reset_credentials($this->session->key, $this->session->hash_email);
-				//return redirect(base_url().'login/validate_admin_pw_reset_credentials/'.$this->session->key .'/'.$this->session->hash_email);
 			}
 
 		} else {
 			$this->session->pass_error = form_error('password');
 			$this->session->cpass_error = form_error('cpassword');
 			$this->validate_admin_pw_reset_credentials($this->session->key, $this->session->hash_email);
-			//redirect('login/validate_admin_pw_reset_credentials/'.$this->session->key .'/'.$this->session->hash_email);
 		}
 	}
 
@@ -211,7 +209,7 @@ class Admin extends MX_Controller {
 		if($this->session->userdata('is_logged_in')){
 			$data['main'] = 'backend/dashboard';
 			$data['title'] = "Dashboard";
-			$data['subtitle'] = "Welcome to ShareApp Download";
+			$data['subtitle'] = "Welcome to ".$this->config->item('site_name')." Dashboard";
 			$this->load->view('backend/admin', $data);
 		} else {
 			redirect('login');
