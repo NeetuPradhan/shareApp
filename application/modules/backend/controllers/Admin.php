@@ -20,7 +20,7 @@ class Admin extends MX_Controller {
 		} else {
 			$data['main'] = 'backend/dashboard';
 			$data['title'] = 'Dashboard';
-			$data['subtitle'] = 'Welcome to ShareApp Download';
+			$data['subtitle'] = "Welcome to <b>".$this->config->item('site_name')."</b> Dashboard";
 			$this->load->view('backend/admin', $data);
 		}
 	}
@@ -209,7 +209,7 @@ class Admin extends MX_Controller {
 		if($this->session->userdata('is_logged_in')){
 			$data['main'] = 'backend/dashboard';
 			$data['title'] = "Dashboard";
-			$data['subtitle'] = "Welcome to ".$this->config->item('site_name')." Dashboard";
+			$data['subtitle'] = "Welcome to <b>".$this->config->item('site_name')."</b> Dashboard";
 			$this->load->view('backend/admin', $data);
 		} else {
 			redirect('login');
