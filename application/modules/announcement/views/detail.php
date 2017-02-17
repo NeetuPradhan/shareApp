@@ -11,8 +11,8 @@
 		</div>
 	</div>
 	<div class="col-sm-4">
-        <?php $this->load->view('home/_layouts/indices');?>
-        <?php $this->load->view('home/_layouts/gainers/gainers_list');?>
-        <?php $this->load->view('home/_layouts/losers/losers_list');?>
+        <?php //$this->load->view('home/_layouts/indices');?>
+        <?php //$this->load->view('home/_layouts/gainers/gainers_list');?>
+        <?php //$this->load->view('home/_layouts/losers/losers_list');?>
     </div>
 </div>

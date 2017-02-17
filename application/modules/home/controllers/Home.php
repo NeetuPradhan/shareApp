@@ -22,6 +22,7 @@ class Home extends MX_Controller {
 		$data["news"] = $this->news_model->get_news(HOME_PAGE_LIMIT);
 		$data["gainers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'desc'),5);
 		$data["losers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'asc'),5);
+		$data["turnovers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price'=>'desc'),5);
 		$data["total_turnovers"] = $this->home_model->get_all('tbl_nepse_api_data',array('daily_stock_stats_percentage_change_in_price','asc'),5);
 		$data['scripts'] = array();
 		$data['stylesheets'] = array(
